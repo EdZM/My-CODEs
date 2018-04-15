@@ -8,7 +8,7 @@ Como adicionar pastas/arquivos no github via terminal:
 
 Como remover pastas/arquivos no github via terminal:
 
--digite: git -rm -r [nome da pasta ou arquivo]
+-digite: git rm -r [nome da pasta ou arquivo]
 -agora digite: git commit -m "mensagem justificando/apontando as mudanças"
 -depois: git push origin master (sincroniza repositorio de origem com o master)
 
