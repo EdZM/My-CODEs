@@ -1,6 +1,6 @@
 Como adicionar pastas/arquivos no github via terminal:
 
--na pasta onde estiver digite : git clone (clono o repositorio para a pasta atual)
+-na pasta onde estiver digite : git clone [URL](clono o repositorio desejado para a pasta atual)
 -faça as alterações que desejar nessa pasta e depois digite: git add [caminho] / [arquivo] ou 	
 							     git add [caminho]/[nova_pasta]/
 -agora digite: git commit -m "mensagem justificando/apontando as mudanças"
