@@ -1,3 +1,5 @@
+DICAS GITHUB
+
 Como adicionar pastas/arquivos no github via terminal:
 
 -na pasta onde estiver digite : git clone [URL](clono o repositorio desejado para a pasta atual)
