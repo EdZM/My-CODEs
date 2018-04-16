@@ -1,7 +1,7 @@
 all: clean compile clean
 
 compile: main.o tad_arvore_abb.o
-	@gcc -o TAD_ARVORE_ABB main.o tad_arvore_abb.o
+	@gcc -o TAD_ARVORE_ABB main.o tad_arvore_abb.o  
 
 main.o:
 	@gcc -c main.c

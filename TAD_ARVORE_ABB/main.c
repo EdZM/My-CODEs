@@ -9,11 +9,15 @@ int main(int argc, char* argv[]){
 
 	abb = criar_arvore();
 
-	inserir(abb, 2);
-	inserir(abb, 3);
+	inserir(&abb, 2);
+	inserir(&abb, 3);
+	inserir(&abb, 4);
+	inserir(&abb, 1);
+	inserir(&abb, 0);
+	
 
-
-	//printf("%d\n", abb->raiz->elemento);
+	printf("chave esquerda: %d\n", abb->raiz->esquerda->esquerda->elemento );
+	
 
 return 0;	
 }

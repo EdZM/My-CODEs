@@ -25,43 +25,36 @@ return arv;
 
 
 
-void inserir(ARVORE* arvore, int chave){
+void inserir(ARVORE** arvore, int chave){// deve receber o endereço da raiz para que eu mude a arvore de fato
 
-	NODE* aux = arvore->raiz;
+	NODE** aux = &(*arvore)->raiz; //aux aponta para a raiz da arvore
 	
-	if(arvore->raiz->elemento == -1 ){
-			arvore->raiz->elemento = chave;
+	if((*arvore)->raiz->elemento == -1 ){ //se isso for verdadeiro quer dizer que a chave a ser inserida é a chave da raiz
+		(*arvore)->raiz->elemento = chave;
 
-			printf("asad\n");
-
-	}else {
-
+	} else {
 	
-		while ( aux != NULL ){//rever isso
-			if (aux->elemento > chave){
-				aux = aux->esquerda;
+		while ( (*aux) != NULL ){
+			if ((*aux)->elemento > chave){
+				aux = &(*aux)->esquerda;
 			
-			} else if (aux->elemento < chave){
-				aux = aux->direita;
+			} else if ((*aux)->elemento < chave){
+				aux = &(*aux)->direita;
+				counter++;
 
-			} else if (aux->elemento == chave){
+
+			} else if ((*aux)->elemento == chave){
 				printf("Chave repetida\n");
 				break;
 
 			}
 
-
 		}
 
-		printf("asad3\n");
-		NODE* aux2 = (NODE*)malloc(sizeof(NODE)); 
-		aux2->esquerda = NULL;
-		aux2->direita = NULL;
-		aux2->elemento = chave;
-
-		aux = aux2;
-
-
+		*aux = (NODE*)malloc(sizeof(NODE)); //o endereço apontado por *aux receberá um novo nó
+		(*aux)->esquerda = NULL;
+		(*aux)->direita = NULL;
+		(*aux)->elemento = chave;
 
 	}	
 
