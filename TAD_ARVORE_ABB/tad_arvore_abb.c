@@ -47,6 +47,40 @@ void inserir(ARVORE** arvore, int chave){// deve receber o endereço da raiz par
 }
 
 
+void busca(ARVORE* arvore, int chave){
+
+	NODE* aux = arvore->raiz;
+
+
+	while(aux != NULL ){
+		
+
+		if (aux->elemento > chave){
+			aux = aux->esquerda;
+		
+		} else if (aux->elemento < chave){
+			aux = aux->direita;
+
+
+		} else if (aux->elemento == chave){
+			printf("Chave encontrada: %d\n", aux->elemento);
+			return; // retornando para a main , em caso de chave repetida . O return garante que eu paro por aqui e nao continuo a função
+
+		}
+
+
+	}
+
+	printf("Chave não encontrada\n");
+
+
+
+}
+
+
+
+
+
 
 void remover(ARVORE** arvore, int chave){};
 

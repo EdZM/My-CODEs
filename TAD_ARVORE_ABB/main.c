@@ -16,15 +16,19 @@ int main(int argc, char* argv[]){
 
 	srand(time(NULL));
 
-	inserir(&abb, 1);
-	inserir(&abb, 1);
 
 
-	for (int i = 0; i < 10; ++i)	{
+	for (int i = 0; i < 15; ++i)	{
+		
 		random_key = rand()%(50); // sorteira uma chave entre 0 e 49
+	
 		printf("Chave a ser inserida: %d\n", random_key);
 		inserir(&abb, random_key);
+	
 	}
+
+	busca(abb, 36); // não há como saber exatamente se vou encontrar a chave 36 , pois a inserção é de chaves ALEATORIAS entre 0 e 49
+
 	
 	printf("\n\nImpressao em ordem dos elementos da arvore: \n");
 
