@@ -15,7 +15,7 @@ clean:
 
 
 run:
-	@valgrind ./TAD_ARVORE_ABB
+	@./TAD_ARVORE_ABB
 
 zip:
 	zip -r TAD_ARVORE_ABB *.c* .h Makefile

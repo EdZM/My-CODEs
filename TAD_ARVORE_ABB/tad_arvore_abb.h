@@ -18,6 +18,11 @@ typedef struct arvore{
 
 
 //functions
+ARVORE* criar_arvore();
+void inserir(ARVORE* arvore, int chave);
+void remover(ARVORE* arvore, int chave);
+void free_tree(ARVORE** arvore);
+
 
 
 #endif
