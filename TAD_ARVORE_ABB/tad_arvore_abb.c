@@ -9,14 +9,8 @@ ARVORE* criar_arvore(){
 
 	arv = (ARVORE*)malloc(sizeof(ARVORE));
 
-
 	if (arv != NULL){
 		arv->raiz = NULL;	
-		arv->raiz = (NODE*) malloc(sizeof(NODE));
-		arv->raiz->elemento = -1;
-		arv->raiz->esquerda = NULL;
-		arv->raiz->direita = NULL;
-		
 	}
 
 
@@ -27,41 +21,87 @@ return arv;
 
 void inserir(ARVORE** arvore, int chave){// deve receber o endereço da raiz para que eu mude a arvore de fato
 
-	NODE** aux = &(*arvore)->raiz; //aux aponta para a raiz da arvore
+	NODE** aux = &(*arvore)->raiz; //aux aponta para a raiz da arvore inicialmente
 	
-	if((*arvore)->raiz->elemento == -1 ){ //se isso for verdadeiro quer dizer que a chave a ser inserida é a chave da raiz
-		(*arvore)->raiz->elemento = chave;
-
-	} else {
-	
-		while ( (*aux) != NULL ){
-			if ((*aux)->elemento > chave){
-				aux = &(*aux)->esquerda;
-			
-			} else if ((*aux)->elemento < chave){
-				aux = &(*aux)->direita;
-				counter++;
+	while ( (*aux) != NULL ){ // percorro a arvore até achar a posição ideal para o nó a ser inserido
+		if ((*aux)->elemento > chave){
+			aux = &(*aux)->esquerda;
+		
+		} else if ((*aux)->elemento < chave){
+			aux = &(*aux)->direita;
 
 
-			} else if ((*aux)->elemento == chave){
-				printf("Chave repetida\n");
-				break;
-
-			}
+		} else if ((*aux)->elemento == chave){
+			printf("Chave repetida\n");
+			return; // retornando para a main , em caso de chave repetida . O return garante que eu paro por aqui e nao continuo a função
 
 		}
 
-		*aux = (NODE*)malloc(sizeof(NODE)); //o endereço apontado por *aux receberá um novo nó
-		(*aux)->esquerda = NULL;
-		(*aux)->direita = NULL;
-		(*aux)->elemento = chave;
+	}
 
-	}	
+	*aux = (NODE*)malloc(sizeof(NODE)); //o endereço apontado por *aux receberá um novo nó
+	(*aux)->esquerda = NULL;
+	(*aux)->direita = NULL;
+	(*aux)->elemento = chave;
 
 }
 
 
 
-void remover(ARVORE* arvore, int chave){};
+void remover(ARVORE** arvore, int chave){};
+
+
+
+
+
+
+
+void visita(NODE* node){
+	printf("chave: %d\n", node->elemento );
+	
+}
+
+
+void impressao_em_ordem(NODE* node){
+
+	if (node != NULL){
+		impressao_em_ordem(node->esquerda);
+		visita(node);
+		impressao_em_ordem(node->direita);
+
+
+	}
+
+}
+
+
+void impressao_pre_ordem(NODE* node){
+
+	if (node != NULL){
+		visita(node);
+		impressao_em_ordem(node->esquerda);
+		impressao_em_ordem(node->direita);
+
+
+	}
+
+}
+
+void impressao_pos_ordem(NODE* node){
+
+	if (node != NULL){
+		impressao_em_ordem(node->esquerda);
+		impressao_em_ordem(node->direita);
+		visita(node);
+
+	}
+
+}
+
+
+
+
+
+
 void free_tree(ARVORE** arvore){};
 
