@@ -21,17 +21,17 @@ return arv;
 
 void inserir(ARVORE** arvore, int chave){// deve receber o endereço da raiz para que eu mude a arvore de fato
 
-	NODE** aux = &(*arvore)->raiz; //aux aponta para a raiz da arvore inicialmente
+	NODE** node = &(*arvore)->raiz; //node aponta para a raiz da arvore inicialmente
 	
-	while ( (*aux) != NULL ){ // percorro a arvore até achar a posição ideal para o nó a ser inserido
-		if ((*aux)->elemento > chave){
-			aux = &(*aux)->esquerda;
+	while ( (*node) != NULL ){ // percorro a arvore até achar a posição ideal para o nó a ser inserido
+		if ((*node)->elemento > chave){
+			node = &(*node)->esquerda;
 		
-		} else if ((*aux)->elemento < chave){
-			aux = &(*aux)->direita;
+		} else if ((*node)->elemento < chave){
+			node = &(*node)->direita;
 
 
-		} else if ((*aux)->elemento == chave){
+		} else if ((*node)->elemento == chave){
 			printf("Chave repetida\n");
 			return; // retornando para a main , em caso de chave repetida . O return garante que eu paro por aqui e nao continuo a função
 
@@ -39,42 +39,35 @@ void inserir(ARVORE** arvore, int chave){// deve receber o endereço da raiz par
 
 	}
 
-	*aux = (NODE*)malloc(sizeof(NODE)); //o endereço apontado por *aux receberá um novo nó
-	(*aux)->esquerda = NULL;
-	(*aux)->direita = NULL;
-	(*aux)->elemento = chave;
+	*node = (NODE*)malloc(sizeof(NODE)); //o endereço apontado por *node receberá um novo nó
+	(*node)->esquerda = NULL;
+	(*node)->direita = NULL;
+	(*node)->elemento = chave;
 
 }
 
 
-void busca(ARVORE* arvore, int chave){
+int busca(ARVORE* arvore, int chave){
 
-	NODE* aux = arvore->raiz;
+	NODE* node = arvore->raiz;
 
-
-	while(aux != NULL ){
+	while(node != NULL ){
 		
-
-		if (aux->elemento > chave){
-			aux = aux->esquerda;
+		if (node->elemento > chave){
+			node = node->esquerda;
 		
-		} else if (aux->elemento < chave){
-			aux = aux->direita;
+		} else if (node->elemento < chave){
+			node = node->direita;
 
-
-		} else if (aux->elemento == chave){
-			printf("Chave encontrada: %d\n", aux->elemento);
-			return; // retornando para a main , em caso de chave repetida . O return garante que eu paro por aqui e nao continuo a função
+		} else if (node->elemento == chave){		
+			return 1; // retornando para a main , em caso de chave repetida . O return garante que eu paro por aqui e nao continuo a função
 
 		}
 
 
 	}
 
-	printf("Chave não encontrada\n");
-
-
-
+	return -1;
 }
 
 
@@ -82,7 +75,65 @@ void busca(ARVORE* arvore, int chave){
 
 
 
-void remover(ARVORE** arvore, int chave){};
+void remover(ARVORE** arvore, int chave){
+
+	
+	NODE** rem = &(*arvore)->raiz ; // OBS.: dessa forma se eu der free estarei liberando a regiao certa da memoria
+ 	NODE** aux; 
+
+
+	//BUSCAR PELA CHAVE ANTES DE TENTAR A REMOÇÃO.    FAÇA ISSO NA MAIN
+	
+		
+	while((*rem) != NULL){
+		if ((*rem)->elemento > chave){
+			//node2 = node; 				// com isso garanto que o node2 vai parar no nó pai de node
+			rem = &(*rem)->esquerda; 	// node deve para exatamente no nó que desejo retirar
+
+		
+		} else if ((*rem)->elemento < chave){
+			//node2 = node;
+			rem = &(*rem)->direita;
+
+		} else {
+
+			if((*rem)->esquerda == NULL){
+				aux = rem;
+				*rem = (*rem)->direita;		//melhorar isso
+				free(*aux);
+
+				
+			}else if((*rem)->direita == NULL ){
+				aux = rem;
+				*rem = (*rem)->esquerda;	//melhorar isso
+				free(*aux);
+
+			}else {
+
+				aux = &(*rem)->esquerda;
+				while((*aux)->direita != NULL){
+					aux = &(*aux)->direita;
+
+				}	
+				
+				printf("nó que quero remover:%d\n", (*rem)->elemento);
+				printf("maior nó a esquerda:%d\n", (*aux)->elemento);
+
+
+				//RESTO DA REMOÇÃO: TO DO
+
+				break;
+			}
+
+		}
+
+	}
+
+
+}
+
+
+
 
 
 
