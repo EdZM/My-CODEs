@@ -80,6 +80,7 @@ void remover(ARVORE** arvore, int chave){
 	
 	NODE** rem = &(*arvore)->raiz ; // OBS.: dessa forma se eu der free estarei liberando a regiao certa da memoria
  	NODE** aux; 
+ 	NODE** pai; 
 
 
 	//BUSCAR PELA CHAVE ANTES DE TENTAR A REMOÇÃO.    FAÇA ISSO NA MAIN
@@ -87,25 +88,28 @@ void remover(ARVORE** arvore, int chave){
 		
 	while((*rem) != NULL){
 		if ((*rem)->elemento > chave){
-			//node2 = node; 				// com isso garanto que o node2 vai parar no nó pai de node
+			pai = rem; 				// com isso garanto que o node2 vai parar no nó pai de node
 			rem = &(*rem)->esquerda; 	// node deve para exatamente no nó que desejo retirar
 
 		
 		} else if ((*rem)->elemento < chave){
-			//node2 = node;
+			pai = rem;
 			rem = &(*rem)->direita;
 
 		} else {
 
+			printf("nó que quero remover:%d\n", (*rem)->elemento);
+				printf("nó:%d\n", (*pai)->elemento);
+
 			if((*rem)->esquerda == NULL){
-				aux = rem;
-				*rem = (*rem)->direita;		//melhorar isso
-				free(*aux);
+				//aux = rem;
+				//*rem = (*rem)->direita;		//melhorar isso
+				//free(*aux);
 
 				
 			}else if((*rem)->direita == NULL ){
-				aux = rem;
-				*rem = (*rem)->esquerda;	//melhorar isso
+				rem = aux;
+				*pai = (*rem)->esquerda;	//melhorar isso
 				free(*aux);
 
 			}else {
