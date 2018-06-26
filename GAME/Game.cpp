@@ -3,7 +3,7 @@
 #include "SmartStr.h"
 #include "Decryptr.h"
 #include "Human.h"
-#include "computer.h"
+#include "Computer.h"
 
 #include <time.h>
 

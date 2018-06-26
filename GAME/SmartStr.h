@@ -2,7 +2,7 @@
 #define SMARTSTRING_H
 
 #include "defVals.h"
-#include "SmartChr.h"
+#include "SmartChar.h"
 
 class Guess;
 

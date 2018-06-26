@@ -3,8 +3,8 @@
 #include <vector>
 
 #include "defVals.h"
-#include "game.h"
-#include "guess.h"
+#include "Game.h"
+#include "Guess.h"
 
 using namespace std;
 

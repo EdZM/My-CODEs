@@ -1,5 +1,5 @@
 #include "Computer.h"
-#include "smartstr.h"
+#include "SmartStr.h"
 #include "Game.h"
 #include <algorithm>
 

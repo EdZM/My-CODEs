@@ -1,5 +1,5 @@
 
-#include "SmartChr.h"
+#include "SmartChar.h"
 #include "Game.h"
 
 SmartChar::SmartChar(int letter):

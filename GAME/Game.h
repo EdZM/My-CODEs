@@ -2,7 +2,7 @@
 #define GAME_H
 
 #include "defVals.h"
-#include "guess.h"
+#include "Guess.h"
 #include "SmartStr.h"
 
 class Guess;
