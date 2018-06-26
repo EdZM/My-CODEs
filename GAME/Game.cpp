@@ -135,49 +135,11 @@ bool Game::VerifyComputerChoices()
         for ( int i = 0; i < howManyPositions; i++ )
             totalGuesses *= howManyLetters;
     else
-        for (
-            int i = howManyLetters;
-            i > howManyLetters - howManyPositions;
-            i--
-            )
+        for (int i = howManyLetters; i > howManyLetters - howManyPositions; i--)
             totalGuesses *= i;
 
-    int totalSeconds = totalGuesses / GUESSES_PER_SECOND;
-
-    if ( totalSeconds > 2 )
-    {
-        cout << "\n\nYou are asking me to guess ";
-        cout << "from a possible ";
-        cout << totalGuesses;
-        cout <<  " combinations.";
-
-        cout << "\nI can get through about ";
-        cout <<  GUESSES_PER_SECOND;
-        cout << " guesses per second. ";
-        cout << "If the puzzle is tough,";
-        cout << "\na single guess could take me more than ";
-
-        DisplayTime(totalSeconds);
-
-        char confirm = ' ';
-        while ( confirm != 'y' && confirm != 'n' )
-        {
-            cout << "\n\nAre you sure (y/n)? ";
-            cin >> confirm;
-        }
-
-        if ( confirm == 'n' )
-        {
-            howManyLetters = 0;
-            howManyPositions = 0;
-            return false;
-        }
-    }
-    else
-    {
         cout << "Choosing among " << totalGuesses;
         cout << " possible combinations...\n\n";
-    }
 
     return true;
 

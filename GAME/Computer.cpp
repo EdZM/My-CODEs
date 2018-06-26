@@ -20,14 +20,10 @@ void Computer::GenerateAGuess()
 {
 
     bool ok = true;
-    int counter = 0;
     int start = time( NULL );
     do
     {
-        counter++;
         total++;
-        if ( counter % 10000 == 0 )
-            cout << ".";
 
         ok = mySmartString->GetNext();
 
@@ -48,9 +44,6 @@ void Computer::GenerateAGuess()
 
     int end = time( NULL );
     int seconds = end - start;
-    cout << "(" << counter ;
-    cout << " strings eliminated this round; ";
-    cout << total << " total.)";
     if ( seconds > 1 )
         cout << " [" << seconds << " seconds]";
     cout << "\n";
