@@ -29,8 +29,8 @@ void Computer::GenerateAGuess()
 
         if ( !ok )
         {
-            cout << "Something went wrong!";
-            cout << " Please start over\n";
+            cout << "Alguma coisa deu errado!";
+            cout << " Por favor, comece novamente." << endl;
             round = 0;
             delete mySmartString;
             mySmartString = new SmartString(duplicates);
@@ -45,7 +45,7 @@ void Computer::GenerateAGuess()
     int end = time( NULL );
     int seconds = end - start;
     if ( seconds > 1 )
-        cout << " [" << seconds << " seconds]";
+        cout << " [" << seconds << " segundos]";
     cout << "\n";
 }
 
@@ -65,7 +65,7 @@ bool Computer::HandleFlag(char flag)
         quit = true;
         break;
     default:
-        cout << "\nUnknown flag. Ignored.\n";
+        cout << "\nComando desconhecido. Ignorado." << endl;
         break;
     }
     return quit;
@@ -145,13 +145,13 @@ Guess Computer::OfferGuess()
         mySmartString->GetString();
     round++;
     int numCorrect, numInPosition;
-    cout << "\n";
+    cout << endl;
     Display(theGuess);
     cout << "Round " << round << ". ";
-    cout << "Please record score. \t";
-    cout << "How many correct?: ";
+    cout << "Por favor, digite minha pontuacao." << endl;
+    cout << "Quantas corretas?: ";
     cin >> numCorrect;
-    cout << "\t\t\tHow many in position?: ";
+    cout << "\t\t\tQuantas na posicao?: ";
     cin >> numInPosition;
     Guess thisGuess(theGuess,numCorrect,numInPosition);
 
@@ -190,6 +190,6 @@ void Computer::Play()
 // result of pressing -?
 void Computer::ShowHelp()
 {
-    cout << "\t-s Show history\n\t-? Help\n";
-    cout << "\t-q quit\n" << endl;
+    cout << "\t-s Mostrar histórico\n\t-? Ajuda\n";
+    cout << "\t-q Sair\n" << endl;
 }

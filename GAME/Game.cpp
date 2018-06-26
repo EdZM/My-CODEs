@@ -18,14 +18,14 @@ Game::Game()
         while ( howManyLetters < minLetters ||
             howManyLetters > maxLetters )
         {
-            cout << "How many letters? (";
+            cout << "Quantas letras? (";
             cout << minLetters << "-" << maxLetters << "): ";
             cin >> howManyLetters;
             if ( howManyLetters < minLetters ||
                 howManyLetters > maxLetters )
             {
-                cout << "please enter a number between ";
-                cout << minLetters << " and ";
+                cout << "Por favor, insira um numero entre ";
+                cout << minLetters << " e ";
                 cout << maxLetters << endl;
             }
         }
@@ -34,33 +34,33 @@ Game::Game()
         while ( howManyPositions < minPos ||
             howManyPositions > maxPos )
         {
-            cout << "How many positions? (";
+            cout << "Quantas posicoes? (";
             cout << minPos << "-" << maxPos << "): ";
             cin >> howManyPositions;
             if ( howManyPositions < minPos ||
                 howManyPositions > maxPos )
             {
-                cout << "please enter a number between ";
-                cout << minPos <<" and " << maxPos << endl;
+                cout << "Por favor, insira um numero entre ";
+                cout << minPos <<" e " << maxPos << endl;
             }
         }
 
         char choice = ' ';
-        while ( choice != 'y' && choice != 'n' )
+        while ( choice != 's' && choice != 'n' )
         {
-            cout << "Allow duplicates (y/n)? ";
+            cout << "Permitir duplicatas (s/n)? ";
             cin >> choice;
         }
 
-        duplicates = choice == 'y' ? true : false;
+        duplicates = choice == 's' ? true : false;
 
         if ( ! duplicates &&
             howManyPositions > howManyLetters )
         {
-            cout << "\nI can't put " << howManyLetters;
-            cout << " letters in " << howManyPositions;
-            cout << " positions without duplicates! ";
-            cout << "Please try again.\n\n";
+            cout << "\nNao posso colocar " << howManyLetters;
+            cout << " letras em " << howManyPositions;
+            cout << " posicoes sem duplicatas! ";
+            cout << "Por favor, tente novamente.\n" << endl;
             howManyLetters = 0;
             howManyPositions = 0;
             continue;
@@ -69,8 +69,8 @@ Game::Game()
         choice = ' ';
         while ( choice != 'h' && choice != 'c' )
         {
-            cout << "Who guesses. (H)uman";
-            cout << " or (C)omputer? (h/c)? ";
+            cout << "Quem sera desafiado? (H)umano";
+            cout << " ou (C)omputador? (h/c)? ";
             cin >> choice;
         }
 
@@ -94,16 +94,16 @@ void Game::DisplayTime(int totalSeconds)
     int totalHours = totalSeconds / SecondsInHour;
     int totalMinutes = totalSeconds / SecondsInMinute;
     if ( totalDays > 1 )
-        cout << totalDays << " days! ";
+        cout << totalDays << " dias! ";
 
     else if ( totalHours > 1 )
-        cout << totalHours << " hours! ";
+        cout << totalHours << " horas! ";
 
     else if ( totalMinutes > 1 )
-        cout << totalMinutes << " minutes. ";
+        cout << totalMinutes << " minutos. ";
 
     else
-        cout << totalSeconds << " seconds. ";
+        cout << totalSeconds << " segundos. ";
 }
 
 void Game::Play()
@@ -117,7 +117,7 @@ void Game::Play()
     int end = time( NULL );
     int totalSeconds = end - start;
 
-    cout << "\nTotal elapsed time, this game: ";
+    cout << "\nTempo total de jogo: ";
     DisplayTime(totalSeconds);
 
     cout << "\n";
@@ -138,8 +138,8 @@ bool Game::VerifyComputerChoices()
         for (int i = howManyLetters; i > howManyLetters - howManyPositions; i--)
             totalGuesses *= i;
 
-        cout << "Choosing among " << totalGuesses;
-        cout << " possible combinations...\n\n";
+        cout << "Escolhendo entre " << totalGuesses;
+        cout << " possiveis combinacoes...\n" << endl;
 
     return true;
 

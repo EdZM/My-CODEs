@@ -42,7 +42,7 @@ bool Human::HandleFlag(char flag)
         quit = true;
         break;
     default:
-        cout << "\nUnknown flag. Ignored.\n";
+        cout << endl << "Comando desconhecido. Ignorado." << endl;
         break;
     }
     return quit;
@@ -91,10 +91,10 @@ void Human::Play()
         string guess;
 
         cout << "\nRound " << round;
-        cout << ". Enter -? or ";
+        cout << ". Digite -? ou ";
         cout << Game::howManyPositions;
-        cout << " letters between ";
-        cout << alpha[0] << " and ";
+        cout << " letras entre ";
+        cout << alpha[0] << " e ";
         cout << alpha[Game::howManyLetters-1] << ": ";
 
         cin >> guess;
@@ -109,8 +109,8 @@ void Human::Play()
 
         if ( guess.length() < Game::howManyPositions )
         {
-            cout << "\n ** Please enter exactly ";
-            cout << Game::howManyPositions << " letters. **\n";
+            cout << endl << "** Por favor, digite entre exatamente ";
+            cout << Game::howManyPositions << " letras. **" << endl;
             continue;
         }
 
@@ -135,20 +135,20 @@ void Human::Play()
         else
         {
 
-            cout << "Please enter only letters between ";
-            cout << alpha[0] << " and ";
-            cout << alpha[Game::howManyLetters-1] << "\n";
+            cout << "Por favor, digite apenas letras entre ";
+            cout << alpha[0] << " e ";
+            cout << alpha[Game::howManyLetters-1] << endl;
             continue;
         }
 
         round++;
-        cout << "\nYour guess: ";
+        cout << endl << "Sua tentativa: ";
         Display(thisGuess);
 
         // compute and report how they did
         Score(thisGuess,correct,position);
-        cout << "\t\t" << correct << " correct, ";
-        cout << position << " in position." << endl;
+        cout << "\t\t" << correct << " corretas, ";
+        cout << position << " em posicao." << endl;
 
         // crate a record and record it in the history vector
         Guess thisRound(thisGuess,correct,position);
@@ -157,22 +157,20 @@ void Human::Play()
 
     if ( ! quit )
     {
-        cout << "\nThe answer: ";
+        cout << endl << "A resposta: ";
         Display(GetSolution());
         cout << "\n\n" << endl;
 
-        cout << "\n\nCongratulations! It took you ";
+        cout << endl<< "\nParabéns!!! Levou ";
 
         if ( round <= 6 )
-            cout << "only ";
+            cout << "apenas ";
 
         if ( round-1 == 1 )
-            cout << "one round!" << endl;
+            cout << "um round!" << endl;
         else
             cout << round-1 << " rounds." << endl;
     }
-
-
 }
 
 
@@ -217,7 +215,7 @@ void Human::Score(
 void Human::ShowHint()
 {
     if ( hintCtr < Game::howManyPositions ) {
-        cout << "\nHINT!! Position ";
+        cout << "\nDICA!! Posicao ";
         cout << hintCtr+1 << ": ";
         cout << solution[hintCtr] << endl;
         hintCtr++;
@@ -226,6 +224,6 @@ void Human::ShowHint()
     // result of pressing -?
 void Human::ShowHelp()
 {
-    cout << "\t-h Hint\n\t-s Show history\n\t";
-    cout << "-? Help\n\t-q quit\n" << endl;
+    cout << "\t-h Dica\n\t-s Mostrar historico\n\t";
+    cout << "-? Ajuda\n\t-q Sair\n" << endl;
 }

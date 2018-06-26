@@ -83,8 +83,8 @@ bool SmartString::RemoveCurrentCharacters()
             if (! In(deadCharacters,theChar) )
             {
                 deadCharacters.push_back(theChar);
-                cout << "Eliminating " << theChar;
-                cout << " from current position" << endl;
+                cout << "Eliminando " << theChar;
+                cout << " da atual posicao" << endl;
                 anyDeleted = true;
             }
         }
@@ -130,7 +130,7 @@ bool SmartString::RemoveCurrentCharactersInEveryPosition()
                 if (! In(deadCharacters,theChar) )
                 {
                     deadCharacters.push_back(theChar);
-                    cout << "Eliminating " << theChar << endl;
+                    cout << "Eliminando" << theChar << endl;
                     anyDeleted = true;
                 }
             }

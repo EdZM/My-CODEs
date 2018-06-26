@@ -19,7 +19,7 @@ void Guess::Display() const
 		);
 	cout << "\t";
 	cout << score.first;
-	cout << " correct, ";
+	cout << " corretas, ";
 	cout << score.second;
-	cout << " in position\n";
+	cout << " na posicao\n";
 }
