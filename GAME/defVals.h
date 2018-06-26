@@ -1,3 +1,9 @@
+/*
+  Arquivo com a inicialização de variáveis relevantes para o jogo. Especifica quais letras são passiveis de serem escolhidas,
+  intervalo de posições e como contagem do tempo será realizada
+
+*/
+
 #ifndef DEFINED
 #define DEFINED
 
