@@ -8,20 +8,18 @@
 
 using namespace std;
 
-int main()
-{
+int main(){
 
 	cout << "OOPassword - ";
 	cout << "ICMC-USP - ";
 	cout << "Version 1.0\n\n" << endl;
 	cout << "Seja bem-vindo ao OOPassword! :D" << endl;
-	cout << "Desafio você a acertar a porra da minha senha" << endl;
-	cout << "ou aposto que eu adivinho a porra da sua. Vamos nessa?\n\n" << endl;
+	cout << "Desafio você a acertar a minha senha" << endl;
+	cout << "ou aposto que eu adivinho a sua. Vamos nessa?\n\n" << endl;
 
 	bool playAgain = true;
 
-	while ( playAgain )
-	{
+	while ( playAgain ){
 		char choice = ' ';
 		Game * g = new Game;
 		g->Play();
