@@ -3,16 +3,19 @@
 
 #include "defVals.h"
 #include <utility>
+
 using namespace std;
 
-class Guess{
+class Guess {
+
 public:
     Guess(vector<char> guess, int howManyRight, int howManyInPosition);
     ~Guess() {}
 
-    void  Display() const;
-	pair<int, int>	GetScore()	const { return score; }
-	vector<char>	GetString()	const { return myString; }
+    void Display() const;
+	  pair<int, int> GetScore() const { return score; }
+	  vector<char> GetString() const { return myString; }
+
 private:
     pair<int, int> score;
     vector<char> myString;

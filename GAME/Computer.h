@@ -5,8 +5,8 @@
 
 class SmartString;
 
-class Computer : public Decrypter
-{
+class Computer:public Decrypter {
+
 public:
     Computer(bool duplicates);
     virtual ~Computer();
@@ -19,7 +19,7 @@ private:
     Guess OfferGuess();
     void ShowHelp();
 
-    SmartString * mySmartString;
+    SmartString *mySmartString;
     int total;
 };
 

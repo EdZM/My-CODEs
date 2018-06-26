@@ -8,24 +8,23 @@
 class Guess;
 class Decrypter;
 
-class Game
-{
+class Game {
+
 public:
-	Game();
-	~Game(){}
+		Game();
+		~Game(){}
 
-	void Play();
+		void Play();
 
-	static int howManyLetters;
-	static int howManyPositions;
+		static int howManyLetters;
+		static int howManyPositions;
 
 private:
-	void    DisplayTime(int secs);
-	bool    VerifyComputerChoices();
-	bool    duplicates;
+		void    DisplayTime(int secs);
+		bool    VerifyComputerChoices();
+		bool    duplicates;
 
-	Decrypter *        pDecrypter;
-
+		Decrypter *pDecrypter;
 };
 
 #endif

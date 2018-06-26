@@ -3,8 +3,8 @@
 
 #include "defVals.h"
 
-class SmartChar
-{
+class SmartChar {
+
 public:
     SmartChar(int letter = 0);
     virtual ~SmartChar();
@@ -17,7 +17,6 @@ public:
 private:
     int myChar;
     vector<char> myCharacters;
-
 };
 
 #endif

@@ -10,10 +10,8 @@
 int Game::howManyLetters = 0;
 int Game::howManyPositions = 0;
 
-Game::Game()
-{
-    for ( ;; )
-    {
+Game::Game() {
+    while(1) {
         // get user's preference for how many possible letters
         while ( howManyLetters < minLetters ||
             howManyLetters > maxLetters )
