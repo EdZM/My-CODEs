@@ -1,3 +1,9 @@
+/*
+    Arquivo com os métodos implementados da classe computer, que é responsável por gerenciar o jogo do computador, verificando seus acertos, 
+    contabilizando tempo decorrido, processando e analisando suas tentativas, etc.
+*/
+
+
 #include "Computer.h"
 #include "SmartStr.h"
 #include "Game.h"
