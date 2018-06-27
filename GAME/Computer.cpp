@@ -1,6 +1,8 @@
 /*
-    Arquivo com os métodos implementados da classe computer, que é responsável por gerenciar o jogo do computador, verificando seus acertos, 
-    contabilizando tempo decorrido, processando e analisando suas tentativas, etc.
+    Implementação da classe Computer,
+    responsável por gerenciar o jogo do computador,
+    verificando seus acertos, contabilizando o tempo decorrido e
+    processando e analisando suas tentativas.
 */
 
 
@@ -38,7 +40,7 @@ void Computer::GenerateAGuess() {
             delete mySmartString;
             mySmartString = new SmartString(duplicates);
             ShowHistory();
-            cout << "\n" << endl;
+            cout << endl;
             history.clear();
             continue;
         }
@@ -52,7 +54,7 @@ void Computer::GenerateAGuess() {
     cout << endl;
 }
 
-// Handle any flag from user (-?,-q, etc.)
+// Administrando a flag (-?,-q, etc.)
 bool Computer::HandleFlag(char flag) {
     bool quit = false;
     switch (flag) {
@@ -161,7 +163,7 @@ void Computer::Play() {
     }
 }
 
-// result of pressing -?
+// Administrar menu de opções -?
 void Computer::ShowHelp()
 {
     cout << "\t-s Mostrar histórico\n\t-? Ajuda\n";

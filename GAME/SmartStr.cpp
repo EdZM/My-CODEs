@@ -1,7 +1,6 @@
 /*
-    Arquivo com os métodos implementados da classe SmartStr, responsavel tambem por gerenciar a tentativa do computador quando esse estiver
-    jogando. Para isso essa, classe
-    
+    Implementação da classe SmartStr, responsavel por gerenciar
+    a tentativa do computador quando esse estiver jogando.
 */
 
 #include "SmartStr.h"
@@ -9,7 +8,7 @@
 #include "Guess.h"
 
 SmartString::SmartString(bool dupes):
-duplicates(dupes){
+duplicates(dupes) {
     for ( int i = 0; i < Game::howManyPositions; i++ ) {
         int j;
         if ( duplicates )
@@ -21,14 +20,14 @@ duplicates(dupes){
     }
 }
 
-SmartString::~SmartString(){
+SmartString::~SmartString() {
 
 }
 
-vector<char> SmartString::GetString(){
+vector<char> SmartString::GetString() {
     vector<char> outString;
 
-    for ( vector<SmartChar>::iterator it = myString.begin(); it != myString.end(); it++ ){
+    for ( vector<SmartChar>::iterator it = myString.begin(); it != myString.end(); it++ ) {
         char theChar = it->GetChar();
         outString.push_back(theChar);
     }
@@ -36,36 +35,35 @@ vector<char> SmartString::GetString(){
 }
 
 
-bool SmartString::GetNext(){
+bool SmartString::GetNext() {
     vector<char> outString;
     vector<SmartChar>::reverse_iterator rit;
     rit = myString.rbegin();
 
     bool rollover = rit->Increment();
-    while ( rollover ){
+    while ( rollover ) {
         rit++;
         if ( rit == myString.rend() )
             return false;
-        else {
+        else
             rollover = rit->Increment();
-        }
     }
     return true;
 }
 
-// método para remover um caractere que está sendo mostrado 
-// em uma posição específica
-bool SmartString::RemoveCurrentCharacters(){
+// Remove um caractere que está sendo
+// mostrado em uma posição específica
+bool SmartString::RemoveCurrentCharacters() {
     char theChar;
     bool anyDeleted = false;
 
-    for ( vector<SmartChar>::iterator it = myString.begin(); it != myString.end(); it++ ){
+    for ( vector<SmartChar>::iterator it = myString.begin(); it != myString.end(); it++ ) {
         theChar = it->GetChar();
 
-        if ( ! In(forcedCharacters,theChar) ) {
+        if ( !In(forcedCharacters,theChar) ) {
             theChar = it->RemoveCurrent();
-           
-            if (! In(deadCharacters,theChar) ){
+
+            if ( !In(deadCharacters,theChar) ) {
                 deadCharacters.push_back(theChar);
                 cout << "Eliminando " << theChar;
                 cout << " da atual posicao" << endl;
@@ -76,24 +74,24 @@ bool SmartString::RemoveCurrentCharacters(){
     return anyDeleted;
 }
 
-// método para remover um caractere que está sendo mostrado 
+// Remove um caractere que está sendo mostrado
 // em uma posição específica de cada posição existente
-bool SmartString::RemoveCurrentCharactersInEveryPosition(){
+bool SmartString::RemoveCurrentCharactersInEveryPosition() {
     char theChar;
     bool anyDeleted = false;
     vector <char> currentGuess;
 
-    for ( vector<SmartChar>::iterator it = myString.begin(); it != myString.end(); it++ ){
+    for ( vector<SmartChar>::iterator it = myString.begin(); it != myString.end(); it++ ) {
         currentGuess.push_back(it->GetChar());
     }
 
-    for ( vector<char>::iterator itc = currentGuess.begin(); itc != currentGuess.end(); itc++ ){
+    for ( vector<char>::iterator itc = currentGuess.begin(); itc != currentGuess.end(); itc++ ) {
         theChar = *itc;
-        if ( ! In(forcedCharacters,theChar) ){
+        if ( ! In(forcedCharacters,theChar) ) {
 
-            for (vector<SmartChar>::iterator it2 = myString.begin(); it2 != myString.end(); it2++ ){
+            for (vector<SmartChar>::iterator it2 = myString.begin(); it2 != myString.end(); it2++ ) {
                 it2->Remove(theChar);
-                if (! In(deadCharacters,theChar) ){
+                if ( !In(deadCharacters,theChar) ) {
                     deadCharacters.push_back(theChar);
                     cout << "Eliminando" << theChar << endl;
                     anyDeleted = true;
@@ -104,7 +102,7 @@ bool SmartString::RemoveCurrentCharactersInEveryPosition(){
     return anyDeleted;
 }
 
-bool SmartString::CanEliminateCharacters( const Guess & theGuess ){
+bool SmartString::CanEliminateCharacters( const Guess & theGuess ) {
     bool anyDeleted = false;
     ForceCharacters(theGuess);
     int forcedInAnswer = CountForcedInGuess(theGuess);
@@ -113,50 +111,49 @@ bool SmartString::CanEliminateCharacters( const Guess & theGuess ){
     int inPos = theGuess.GetScore().second;
 
 
-    if ( overall == 0 || overall == forcedInAnswer ){
+    if ( overall == 0 || overall == forcedInAnswer ) {
         anyDeleted = RemoveCurrentCharactersInEveryPosition();
-        return anyDeleted; 
+        return anyDeleted;
     }
 
-    if ( inPos == 0 ){
+    if ( inPos == 0 ) {
         anyDeleted = RemoveCurrentCharacters();
-        return anyDeleted; 
+        return anyDeleted;
     }
 
     return false;
 }
 
-void SmartString::ForceCharacters(const Guess &theGuess){
+void SmartString::ForceCharacters(const Guess &theGuess) {
     int numDifferentLetters = CountUniqueLettersInGuess(theGuess);
     int score = theGuess.GetScore().first;
 
-    if ( score >= numDifferentLetters ){
-        vector<char> theString =
-            theGuess.GetString();
+    if ( score >= numDifferentLetters ) {
+        vector<char> theString = theGuess.GetString();
 
-        for ( vector<char>::const_iterator it = theString.begin(); it != theString.end(); it++ ){
-            if ( ! In(forcedCharacters, *it) )
+        for ( vector<char>::const_iterator it = theString.begin(); it != theString.end(); it++ ) {
+            if ( !In(forcedCharacters, *it) )
                 forcedCharacters.push_back(*it);
         }
     }
 }
 
-int SmartString::CountUniqueLettersInGuess( const Guess &theGuess ){
+int SmartString::CountUniqueLettersInGuess( const Guess &theGuess ) {
     vector<char> temp;
     vector<char> theString = theGuess.GetString();
 
-    for ( vector<char>::const_iterator it = theString.begin(); it != theString.end(); it++ ){
-        if (! In(temp,*it) )
+    for ( vector<char>::const_iterator it = theString.begin(); it != theString.end(); it++ ) {
+        if ( !In(temp,*it) )
             temp.push_back(*it);
     }
     return temp.size();
 }
 
-int SmartString::CountForcedInGuess( const Guess &theGuess ){
+int SmartString::CountForcedInGuess( const Guess &theGuess ) {
     int howManyForcedInGuess = 0;
     vector<char> theString = theGuess.GetString();
 
-    for ( vector<char>::const_iterator it = theString.begin(); it != theString.end(); it++ ){
+    for ( vector<char>::const_iterator it = theString.begin(); it != theString.end(); it++ ) {
         if ( In( forcedCharacters, *it ) )
             howManyForcedInGuess++;
     }
@@ -165,8 +162,7 @@ int SmartString::CountForcedInGuess( const Guess &theGuess ){
 
 }
 
-bool SmartString::In(vector<char> vec, char target) const{
-    vector<char>::iterator where =
-        find(vec.begin(), vec.end(),target);
+bool SmartString::In(vector<char> vec, char target) const {
+    vector<char>::iterator where = find(vec.begin(), vec.end(),target);
     return where != vec.end();
 }

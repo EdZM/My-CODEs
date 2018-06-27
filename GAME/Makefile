@@ -16,7 +16,6 @@ cmpg: clean
 clean:
 	@rm *.o *.zip game -f
 
-
 debug: clean cmpg
 	@valgrind -v --track-origins=yes --leak-check=full ./game
 

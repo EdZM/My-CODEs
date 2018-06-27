@@ -12,26 +12,20 @@ int Game::howManyPositions = 0;
 
 Game::Game() {
     while(1) {
-        // get user's preference for how many possible letters
-        while ( howManyLetters < minLetters ||
-            howManyLetters > maxLetters )
-        {
+        // Administrar quantas letras o jogador deseja
+        while(howManyLetters < minLetters || howManyLetters > maxLetters ) {
             cout << "Quantas letras? (";
             cout << minLetters << "-" << maxLetters << "): ";
             cin >> howManyLetters;
-            if ( howManyLetters < minLetters ||
-                howManyLetters > maxLetters )
-            {
+            if (howManyLetters < minLetters || howManyLetters > maxLetters ) {
                 cout << "Por favor, insira um numero entre ";
                 cout << minLetters << " e ";
                 cout << maxLetters << endl;
             }
         }
 
-        // get user's preference for how many slots (positions)
-        while ( howManyPositions < minPos ||
-            howManyPositions > maxPos )
-        {
+        // Administrar quantas posições o jogador deseja
+        while(howManyPositions < minPos || howManyPositions > maxPos ) {
             cout << "Quantas posicoes? (";
             cout << minPos << "-" << maxPos << "): ";
             cin >> howManyPositions;
@@ -44,18 +38,15 @@ Game::Game() {
         }
 
         char choice = ' ';
-        while ( choice != 's' && choice != 'n' )
-        {
+        while(choice != 's' && choice != 'n') {
             cout << "Permitir duplicatas (s/n)? ";
             cin >> choice;
         }
 
         duplicates = choice == 's' ? true : false;
 
-        if ( ! duplicates &&
-            howManyPositions > howManyLetters )
-        {
-            cout << "\nNao posso colocar " << howManyLetters;
+        if (!duplicates && howManyPositions > howManyLetters ) {
+            cout << endl << "Nao posso colocar " << howManyLetters;
             cout << " letras em " << howManyPositions;
             cout << " posicoes sem duplicatas! ";
             cout << "Por favor, tente novamente.\n" << endl;
@@ -65,18 +56,15 @@ Game::Game() {
         }
 
         choice = ' ';
-        while ( choice != 'h' && choice != 'c' )
-        {
+        while (choice != 'h' && choice != 'c') {
             cout << "Quem sera desafiado? (H)umano";
             cout << " ou (C)omputador? (h/c)? ";
             cin >> choice;
         }
 
-        bool ok = choice == 'h' ?
-            true : VerifyComputerChoices();
-        if( ok )
-        {
-            if ( choice == 'h' )
+        bool ok = choice == 'h' ? true : VerifyComputerChoices();
+        if(ok) {
+            if(choice == 'h')
                 pDecrypter = new Human(duplicates);
             else
                 pDecrypter = new Computer(duplicates);
@@ -86,59 +74,53 @@ Game::Game() {
     }
 }
 
-void Game::DisplayTime(int totalSeconds)
-{
+void Game::DisplayTime(int totalSeconds) {
     int totalDays = totalSeconds / SecondsInDay;
     int totalHours = totalSeconds / SecondsInHour;
     int totalMinutes = totalSeconds / SecondsInMinute;
-    if ( totalDays > 1 )
+    if(totalDays > 1)
         cout << totalDays << " dias! ";
-
-    else if ( totalHours > 1 )
+    else if (totalHours > 1)
         cout << totalHours << " horas! ";
-
-    else if ( totalMinutes > 1 )
+    else if (totalMinutes > 1)
         cout << totalMinutes << " minutos. ";
-
     else
         cout << totalSeconds << " segundos. ";
 }
 
-void Game::Play()
-{
+void Game::Play() {
 
     int start = time( NULL );
 
     pDecrypter->Play();
 
-    // report elapsed time
+    // Avisar tempo total de jogo
     int end = time( NULL );
     int totalSeconds = end - start;
 
-    cout << "\nTempo total de jogo: ";
+    cout << endl << "Tempo total de jogo: ";
     DisplayTime(totalSeconds);
 
-    cout << "\n";
+    cout << endl;
 
     howManyLetters = 0;
     howManyPositions = 0;
 }
 
 
-bool Game::VerifyComputerChoices()
-{
+bool Game::VerifyComputerChoices() {
     int totalGuesses = 1;
 
-    if ( duplicates )
-        for ( int i = 0; i < howManyPositions; i++ )
+    if(duplicates) {
+        for(int i = 0; i < howManyPositions; i++)
             totalGuesses *= howManyLetters;
-    else
-        for (int i = howManyLetters; i > howManyLetters - howManyPositions; i--)
+    } else {
+        for(int i = howManyLetters; i > howManyLetters - howManyPositions; i--)
             totalGuesses *= i;
 
         cout << "Escolhendo entre " << totalGuesses;
         cout << " possiveis combinacoes...\n" << endl;
-
+    }
     return true;
 
 }
