@@ -9,11 +9,11 @@ O jogo consiste em o jogador adivinhar uma sequência de letras formulada pelo c
 - Eduardo Zaboto Mirolli
 - Paulo Bodnarchuki
 
-Código desenvolvido com base em Decryptix!, disponível em C++ de A a Z, de Jesse Liberty
+Código desenvolvido com base em Decryptix!, disponível em *C++ de A a Z*, de Jesse Liberty
 
 ### COMO JOGAR
 Em seu terminal, entre no diretório GAME/ e execute o comando
 
-make
+>make
 
 **Pronto!** Bom divertimento!
