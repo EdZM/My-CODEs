@@ -51,9 +51,7 @@ void shell_sort(int* a, int n){
 			a[k+g] = tmp;
 			atrib_counter++;
 		}
-
 	}
-
 }
 
 
