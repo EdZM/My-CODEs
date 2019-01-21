@@ -1,11 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include <time.h>
 #include <string.h>
 
+long int comp_counter = 0; //contador de comparações entre elementos do vetor 
+long int atrib_counter = 0;//contador de atribuições/trocas envolvendo elementos do vetor
+
+void init(int a[], int n, int step, int range){
+	
+	srand(time(NULL));
+
+	for (int i = 0; i < n; i++)	{
+		int base = i * step;
+		int offset = rand() % range;
+		a[i] = base + offset;
+	}
+}
 
 void print_vec(int vec[], int n){
 
+	printf("Vetor ordenado: ");
 	for (int i = 0; i < n; i++)	{
 		printf("%d ", vec[i]);
 	}	
@@ -90,20 +105,26 @@ void insertion_sort_rec(int* vec, int size, int i, int j){
 }
 
 */
-void insertion_sort(int* vec, int n){
+void insertion_sort(int* a, int n){
 
 	int tmp;
-	int j;
-	
-	for (int i = 1; i < n; i++){
-		tmp = vec[i];
-		
-		for (j = i-1; j >= 0 && tmp < vec[j]; j--){
-			vec[j+1] = vec[j];
-		}
 
-		vec[j+1] = tmp;
+	for (int i = 1; i < n; i++){
+		tmp = a[i];
+		atrib_counter++;
+
+		int k = i - 1;
+		
+		while( ++comp_counter && (k >= 0 && tmp < a[k]) ) { 
+			a[k + 1] = a[k];
+			atrib_counter++;
+			k--;
+			if(k < 0)comp_counter--; //evita que a contagem de comparações seja incrementada quando a condição k>=0 for falsa
+		}
+		a[k+1] = tmp;
+		atrib_counter++;
 	}
+	
 
 }
 
@@ -111,21 +132,29 @@ void insertion_sort(int* vec, int n){
 
 int main(int argc, char* argv[]){
 
-	int* vec1 = NULL; 
-	int n = 100;
+	int n;  //numero de elementos
+	int* a = NULL; 
+
+	n = atoi(argv[1]); //recebe como parametro o segundo argumento de entrada no momento da execucao para ser o tamanho do vetor
 	
-	vec1 = (int*)malloc(n*sizeof(int));
-	srand(time(NULL));
+	a = (int*)malloc(sizeof(int) * n); // vetor que deve conter os números
+	
 
-	for (int i = 0; i < n; i++){
-		vec1[i] = rand()%n;	
-	}
+	//4 opções para geração dos números do vetor
+	init(a, n , 0, 5*n); 	//vetor aleatorio
+	//init(a, n, 10, 100); 	//vetor quase ordenado
+	//init(a, n, -1, 100); 	//vetor quase inversamente ordenado
+	//init(a, n, 0, n/10);	//vetor com muitos valores repetidos
 
-	//insertion_sort_rec(vec1, n, 1 ,1);	
-	insertion_sort(vec1, n);
-	print_vec(vec1, n);
+	comp_counter = 0;
+	atrib_counter = 0;
 
 
-free(vec1);
+	insertion_sort(a, n);
+	print_vec(a,  n);
+	printf("Comparações feitas: %ld\n", comp_counter);
+	printf("Atribuições feitas: %ld\n", atrib_counter);
+
+free(a);
 return 0;
 }

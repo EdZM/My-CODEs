@@ -1,9 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include <time.h>
+#include <string.h>
 
-#define PIVOT(i,j) (i+j)/2
+long int comp_counter = 0; //variavel global para contar as comparações entre elementos do vetor 
+long int atrib_counter = 0;//variavel global para contar as atribuições/trocas envolvendo elementos do vetor
 
+
+//função para a criação dos 4 cenarios a que os metodos de ordenação serão submetidos
+void init(int* a, int n, int step, int range){
+	
+	srand(time(NULL));
+
+	for (int i = 0; i < n; i++)	{
+		int base = i * step;
+		int offset = rand() % range;
+		a[i] = base + offset;
+	}
+}
+
+//função para a impressão do vetor 
+void print_vec(int* a, int n){
+
+	for (int i = 0; i < n; i++){
+		printf("%d ",a[i] );
+	}
+	printf("\n");
+
+}
+
+//função para a trocar 2 duas posições especificas do vetor
+void swap_(int* a, int pos0, int pos1 ){
+	int tmp = a[pos0];
+	a[pos0] = a[pos1];
+	a[pos1] = tmp;
+}
 
 /* Quick sort: A ideia principal aqui é 
 	Ex: 
@@ -12,9 +44,6 @@ Caracteristicas do Quick sort:
 
 ****Vantagens:
 	-> Evita trocas desnecessarias
-
-
-
 
 -> Usa um pivô que vai mudando frequentemente . A escolha dele influencia diretamente na complexidade
 -> separa o vetor em duas partições, que se separam em quatro, depois em oito, e assim por diante
@@ -41,42 +70,7 @@ Implementação feita em aula :
 
 
 */
-
-
-
-
-void print_vec(int vec[], int n){
-
-	for (int i = 0; i < n; i++)	{
-		printf("%d ", vec[i]);
-	}	
-	printf("\n");
-
-}
-
-void swap_(int* a, int pos0, int pos1 ){
-	int tmp = a[pos0];
-	a[pos0] = a[pos1];
-	a[pos1] = tmp;
-}
-
-int pivot_choose(int* a, int left, int right){ //metodo da mediana de tres para escolher o pivo
-
-	int mid = (left + right)/2;
-	if (a[left] < a[right])	{
-		swap_(a, left, right);
-	}
-	if (a[left] < a[mid])	{
-		swap_(a, left, mid);
-	}
-	if (a[mid] < a[right])	{
-		swap_(a, mid, right);
-	}
-
-	return mid;
-}
-
-int quick_sort(int* a, int inicio, int fim){
+void quick_sort(int* a, int inicio, int fim){
 	
 	/*Opções legais pra escolha do pivo
 		opção 1:(randomizada)
@@ -89,48 +83,61 @@ int quick_sort(int* a, int inicio, int fim){
 	int i = inicio;
 	int j = fim;
 	int pivo;
+	int piv_pos = ( (int)(i+j)/2 ); // escolha do pivo como sendo o elemento do meio do vetor analisado
 
-	pivo = a[ pivot_choose(a, inicio, fim) ]; // escolha do pivo baseada em mediana de dois
-	
+	pivo = a[piv_pos];
+	atrib_counter++;
 
-
-	while(j >= i){
-		while(a[i] < pivo) i++;
-		while(a[j] > pivo) j--;
+	//particionamento
+	while(i <= j){
+		while(++comp_counter && (a[i] < pivo) && (i < fim) ) i++;
+		while(++comp_counter && (a[j] > pivo) && (j > inicio) ) j--;
 
 		if(i <= j){ 
 			swap_(a, i, j);
+			atrib_counter+=3;
 			i++;
 			j--;
 		}
 
 	}
 
+
 	if(inicio < j) quick_sort(a, inicio, j);
 	if(i < fim) quick_sort(a, i, fim);
-}
 
+}
+//OBS.: em caso de problemas com a ordenação retire as contagens 
 
 
 
 int main(int argc, char const *argv[]){
 	
-	int* vec = NULL;
-	int n = 100;
+	int n;  //numero de elementos
+	int* a = NULL; 
 
-	//printf("Tamanho do vetor: ");
-	//scanf("%d", &n);
-	srand(time(NULL));
-	vec = (int*)malloc(sizeof(int)*n);
-
-	for (int i = 0; i < n; i++){
-		vec[i] = rand()%1000;
-	}
-	//print_vec(vec,n);
-	quick_sort(vec, 0, n-1);
-	print_vec(vec,n);
+	n = atoi(argv[1]); //recebe como parametro o segundo argumento de entrada no momento da execucao para ser o tamanho do vetor
+	
+	a = (int*)malloc(sizeof(int) * n); // vetor que deve conter os números
 	
 
+	//4 opções para geração dos números do vetor
+	init(a, n , 0, 5*n); 	//vetor aleatorio
+	//init(a, n, 10, 100); 	//vetor quase ordenado
+	//init(a, n, -1, 100); 	//vetor quase inversamente ordenado
+	//init(a, n, 0, n/10);	//vetor com muitos valores repetidos
 
+	comp_counter = 0;
+	atrib_counter = 0;
+
+	quick_sort(a, 0, n-1);
+	
+	print_vec(a,  n);
+	printf("Comparações feitas: %ld\n", comp_counter);
+	printf("Atribuições feitas: %ld\n", atrib_counter);
+
+	
+
+free(a);
 return 0;
 }

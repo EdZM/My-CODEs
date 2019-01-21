@@ -1,15 +1,38 @@
-#include <stdio.h> 
-#include <stdlib.h> 
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 #include <time.h>
+#include <string.h>
 
+long int comp_counter = 0; //contador de comparações entre elementos do vetor 
+long int atrib_counter = 0;//contador de atribuições/trocas envolvendo elementos do vetor
 
-// Pra ver o tempo de execução, em milissegundos, dos metodos de ordenação digite no terminal--> time ./nome_do_programa  
+void init(int a[], int n, int step, int range){
+	
+	srand(time(NULL));
 
+	for (int i = 0; i < n; i++)	{
+		int base = i * step;
+		int offset = rand() % range;
+		a[i] = base + offset;
+	}
+}
 
-// MergeSort (ou ordenação por mistura).
-void merge(int a[], int n) {
+void print_vec(int vec[], int n){
 
-	int *buf = (int *) malloc(sizeof(int) * n);
+	printf("Vetor ordenado: ");
+	for (int i = 0; i < n; i++)	{
+		printf("%d ", vec[i]);
+	}	
+	printf("\n");
+
+}
+
+// MergeSort (ou ordenação por mistura, versão iterativa).
+// OBS.: Usa o paradigma da divisão e conquista 
+void merge_sort(int *a, int n) {
+
+	int *buf = (int *) malloc(sizeof(int) * n); //vetor auxiliar para a ordenação
 
 	if (buf == NULL) {
 		exit(-2);
@@ -17,11 +40,12 @@ void merge(int a[], int n) {
 	
 	int block_len;
 	
-	for(block_len = 1; block_len < n; block_len *= 2) {
+	for(block_len = 1; block_len < n; block_len *= 2) { 
 		
 		int pos = 0;
 		for(pos = 0; pos < n; pos++) { 
 			buf[pos] = a[pos];
+			atrib_counter++;
 		}
 		pos = 0;
 		while(pos < n) { 
@@ -36,55 +60,58 @@ void merge(int a[], int n) {
 				fl2 = n;
 			}
 			while(cl1 < fl1 && cl2 < fl2) { // controla o até onde vai cada lista (1 e 2) 
+				comp_counter++;
 				if (buf[cl1] <= buf[cl2]) {
 					a[pos++] = buf[cl1++];
 				} else {
 					a[pos++] = buf[cl2++];
 				}
+				atrib_counter++;
 			}
-			while(cl1 < fl1) { // esses whiles a seguir preenchem o vetor 'a' com as posições restantes de 'buf' em caso de os blocos serem de tamanhos diferentes
+
+			// esses 2 whiles a seguir preenchem o vetor 'a' com as posições restantes de 'buf' em caso de os blocos serem de tamanhos diferentes
+			while(cl1 < fl1) { 
 				a[pos++] = buf[cl1++];
+				atrib_counter++;
 			}
 			
 			while(cl2 < fl2) {
 				a[pos++] = buf[cl2++];
+				atrib_counter++;
 			}
 		}
 	}
+	
 
 free(buf);
 }
 
-void print_vec(int vec[], int n){
-
-	for (int i = 0; i < n; i++)	{
-		printf("%d ", vec[i]);
-	}	
-	printf("\n");
-
-}
 
 int main( int argc , char* argv[]){
 
-	if(argc != 2){
-		printf("Digite o nome do arquivo seguido da quantidade de elementos\n");
-		return 0;
 	
-	} else {
+	int n;  //numero de elementos
+	int* a = NULL; 
 
-		int n = atoi(argv[1]);
-		int* nums = NULL;
-		
-		nums = (int*) malloc(sizeof(int)*n);
-
-		for (int i = 0; i < n; i++){
-			nums[i]	= rand()%n;
-		}
-
-		merge(nums, n);
-		print_vec(nums,n);
+	n = atoi(argv[1]); //recebe como parametro o segundo argumento de entrada no momento da execucao para ser o tamanho do vetor
 	
-	}
+	a = (int*)malloc(sizeof(int) * n); // vetor que deve conter os números
+	
 
+	//4 opções para geração dos números do vetor
+	init(a, n , 0, 5*n); 	//vetor aleatorio
+	//init(a, n, 10, 100); 	//vetor quase ordenado
+	//init(a, n, -1, 100); 	//vetor quase inversamente ordenado
+	//init(a, n, 0, n/10);	//vetor com muitos valores repetidos
+
+	comp_counter = 0;
+	atrib_counter = 0;
+
+	merge_sort(a, n);
+	print_vec(a,  n);
+	printf("Comparações feitas: %ld\n", comp_counter);
+	printf("Atribuições feitas: %ld\n", atrib_counter);
+
+free(a);
 return 0;
 }

@@ -20,6 +20,7 @@ void init(int a[], int n, int step, int range){
 
 void print_vec(int vec[], int n){
 
+	printf("Vetor ordenado: ");
 	for (int i = 0; i < n; i++)	{
 		printf("%d ", vec[i]);
 	}	
@@ -34,22 +35,56 @@ void swap_(int* a, int pos0, int pos1 ){
 }
 
 
+void heapfy(int *a, int start, int end){
+	
+	int parent, child;
+	
+	parent = start;
+	
+	while(parent < end){
+		child = 2*parent + 1;
+		if(child < end){
+			
+			if(++comp_counter && child + 1 < end && (a[child] < a[child + 1]) ){
+				child++;
+			}
+			if(++comp_counter && a[child] > a[parent]){
+				swap_(a, child, parent);
+				atrib_counter+=3;
+			}
+		}
+		parent = child;
+	}
+	
+
+}
+
+void heapsort(int *a, int n) {
+	
+	for (int i = n-1; i >= 0 ; i--){
+		heapfy(a, i, n); //antes de iniciar a ordenação é necessário transformar o vetor de entrada em uma estrutura heap
+	}
+
+	for (int i = n-1; i > 0 ; i--){
+		swap_(a,0,i);
+		atrib_counter+=3;
+		heapfy(a,0,i);
+
+	}
+	
+}
+
 int main(int argc, char* argv[]){
 
 	int n;  //numero de elementos
-	//int k;	// indice para o 10^k --> deve variar entre 2 e 7
-	int* a = NULL;
+	int* a = NULL; 
 
-	//printf("Digite o valor de k: ");
-	//scanf("%d", &n); 
+	n = atoi(argv[1]); //recebe como parametro o segundo argumento de entrada no momento da execucao para ser o tamanho do vetor
+	
+	a = (int*)malloc(sizeof(int) * n); // vetor que deve conter os números
 	
 
-	n = atoi(argv[1]);
-	//n = pow(10,k);
-	
-	a = (int*)malloc(sizeof(int) * n);
-	
-
+	//4 opções para geração dos números do vetor
 	init(a, n , 0, 5*n); 	//vetor aleatorio
 	//init(a, n, 10, 100); 	//vetor quase ordenado
 	//init(a, n, -1, 100); 	//vetor quase inversamente ordenado
@@ -60,9 +95,10 @@ int main(int argc, char* argv[]){
 
 	heapsort(a, n);
 	
-	printf("%ld\n", comp_counter);
-	printf("%ld\n", atrib_counter);
+	print_vec(a,  n);
+	printf("Comparações feitas: %ld\n", comp_counter);
+	printf("Atribuições feitas: %ld\n", atrib_counter);
 
-
+free(a);
 return 0;	
 }

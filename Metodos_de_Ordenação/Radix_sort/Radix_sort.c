@@ -30,35 +30,53 @@ void print_vec(int* a, int n){
 
 }
 
-void shell_sort(int* a, int n){
 
-	int gaps[8] = {701,501,132,57,23,10,4,1}; //lista fixa dos gaps que garantem a melhor execução ao algoritmo. 
+void radix_sort(int* a, int n){ //k é o número de tipos envolvidos
+	
+	int i;
+    int *aux;
+    int max = a[0];
+    int exp = 1;
 
-	for (int i = 0; i < 8; i++){
-		int g = gaps[i];
-		atrib_counter++;
-		for (int j = g; j < n; j++)	{
-			int tmp = a[j];
-			atrib_counter++;
+    atrib_counter++;
 
-			int k = j - g;
-			while( ++comp_counter && ( k >= 0 ) && ( tmp < a[k] ) ){
-				a[k+g] = a[k];
-				atrib_counter++;
-				
-				k -= g;
-			}
-			a[k+g] = tmp;
-			atrib_counter++;
-		}
+    aux = (int *)calloc(n, sizeof(int));
 
-	}
+    for (i = 0; i < n; i++) { //encontrar o maior elemento da lista é necessário para saber quantos algarismos ele tem
+        if (++comp_counter && a[i] > max)
+    	    max = a[i];
+   			atrib_counter++;
+    }
 
+    while (max/exp > 0) { // a cada while analiso um pedaço do numero (começando pelas unidades, dezenas, centenas...)
+        int types[10] = { 0 };
+    	atrib_counter++;
+    	
+    	for (i = 0; i < n; i++)
+    	    types[(a[i] / exp) % 10]++; // Armazena a contagem de ocorrencias em types[]
+    	
+    	for (i = 1; i < 10; i++)
+    	    types[i] += types[i - 1];  // Altera types[i] para que ele agora contenha a posição atual desse digito em a[]                    
+    		atrib_counter++;
+
+    	for (i = n - 1; i >= 0; i--)
+    	    aux[--types[(a[i] / exp) % 10]] = a[i]; // Monta o vetor de saida (a[])
+    		atrib_counter++;
+
+    	for (i = 0; i < n; i++)
+    	    a[i] = aux[i]; // Copia o vetor auxiliar para a[], para que a[] contenha agora os numeros ordenados de acordo com o digito atual
+    		atrib_counter++;
+
+    	exp *= 10;
+    }
+  
+free(aux);	
 }
 
 
-int main(int argc, char const *argv[]){
 
+int main(int argc, char const *argv[]){
+	
 	int n;  //numero de elementos
 	int* a = NULL; 
 
@@ -76,7 +94,7 @@ int main(int argc, char const *argv[]){
 	comp_counter = 0;
 	atrib_counter = 0;
 
-	shell_sort(a,n);
+	radix_sort(a, n);
 
 	print_vec(a,  n);
 	printf("Comparações feitas: %ld\n", comp_counter);
@@ -85,7 +103,6 @@ int main(int argc, char const *argv[]){
 	
 
 free(a);
-	
-
-	return 0;
+return 0;
 }
+

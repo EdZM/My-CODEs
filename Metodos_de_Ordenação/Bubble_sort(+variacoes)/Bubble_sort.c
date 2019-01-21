@@ -1,16 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include <time.h>
 #include <string.h>
 
 
+long int comp_counter = 0;
+long int atrib_counter = 0;
+
 void print_vec(int vec[], int n){
 
+	printf("Vetor ordenado: ");
 	for (int i = 0; i < n; i++)	{
 		printf("%d ", vec[i]);
 	}	
 	printf("\n");
 
+}
+
+void init(int* a, int n, int step, int range){
+	
+	srand(time(NULL));
+
+	for (int i = 0; i < n; i++)	{
+		int base = i * step;
+		int offset = rand() % range;
+		a[i] = base + offset;
+	}
+}
+
+void swap_(int* a, int pos0, int pos1 ){
+	int tmp = a[pos0];
+	a[pos0] = a[pos1];
+	a[pos1] = tmp;
 }
 
 
@@ -89,15 +111,13 @@ void bubble_sent(int a[], int n) {
 
 
 */
-void bubble_sort(int* vec, int n){
+void bubble_sort(int* a, int n){
 	
 	for (int i = n-1; i >= 0 ; i--)	{
 		for (int k = 0; k < i; k++)	{
-			if(vec[k] > vec[k+1]){
-				int tmp = vec[k];
-				vec[k] = vec[k+1];
-				vec[k+1] = tmp;
-
+			if(++comp_counter && (a[k] > a[k+1]) ){ //durante a verificação do if a comparação já é contabilizada
+				swap_(a, k, k+1);
+				atrib_counter+=3;	// a cada troca o contador de atribuições é incrementado			
 			}
 		}
 	}
@@ -137,7 +157,37 @@ void bubble_sort_sentinel(int* vec, int n){
 }
 
 void bubble_sort_cocktail(int* vec, int n){
+	
+	int swapped = 1;
+    int start = 0;
+    int end = n - 1;
+ 
+    while (swapped) {
+        
+        swapped = 0;
 
+        for (int i = start; i < end; i++) {
+            if (comp_counter++ && (vec[i] > vec[i + 1]) ) {
+                swap_(vec, i, i + 1);
+                swapped = 1;
+            	atrib_counter+=2;
+            }
+        }
+        if (!swapped) break;
+  
+        swapped = 0;       
+        end--;
+
+        for (int i = end - 1; i >= start; i--) {
+            if (comp_counter++ && (vec[i] > vec[i + 1]) ) {
+                swap_(vec, i, i + 1);
+                swapped = 1;
+            	atrib_counter+=2;
+            }
+        }
+        start++;
+    }
+	
 	
 
 }
@@ -145,23 +195,33 @@ void bubble_sort_cocktail(int* vec, int n){
 
 int main(int argc, char* argv[]){
 
-	int* vec1 = NULL; // ponteiro usado para um vetor de numeros aleatorios entre 0 e 99
-	int vec2[] = {34,1,2,17,5,1,31};
-	int n = 7;
+	int n;  //numero de elementos
+	int bubble_type;
+	int* a = NULL;
+
+	n = atoi(argv[1]);
+	bubble_type = atoi(argv[2]);
 	
-	vec1 = (int*)malloc(n*sizeof(int));
-	srand(time(NULL));
-
-	for (int i = 0; i < n; i++){
-		vec1[i] = rand()%100;		
-	}
-
-	bubble_sort(vec1, n);
-	bubble_sort_sentinel(vec2, n);
+	a = (int*)malloc(sizeof(int) * n);
 	
-	print_vec(vec1, n);
-	print_vec(vec2, n);
+	//4 opções para geração dos números do vetor
+	init(a, n , 0, 5*n); 	//vetor aleatorio
+	//init(a, n, 10, 100); 	//vetor quase ordenado
+	//init(a, n, -1, 100); 	//vetor quase inversamente ordenado
+	//init(a, n, 0, n/10);	//vetor com muitos valores repetidos
 
-free(vec1);
+	comp_counter = 0;
+	atrib_counter = 0;
+
+	//3 opções de bubble sort
+	if(bubble_type == 0){ bubble_sort(a, n); }
+	if(bubble_type == 1){ bubble_sort_cocktail(a, n); }
+	if(bubble_type == 2){ bubble_sort_sentinel(a,n); }
+
+	print_vec(a,  n);
+	printf("Comparações feitas: %ld\n", comp_counter);
+	printf("Atribuições feitas: %ld\n", atrib_counter);
+
+free(a);
 return 0;
 }

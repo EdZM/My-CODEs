@@ -1,16 +1,40 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include <time.h>
 #include <string.h>
 
+long int comp_counter = 0; //variavel global para contar as comparações entre elementos do vetor 
+long int atrib_counter = 0;//variavel global para contar as atribuições/trocas envolvendo elementos do vetor
 
-void print_vec(int vec[], int n){
+
+//função para a criação dos 4 cenarios a que os metodos de ordenação serão submetidos
+void init(int* a, int n, int step, int range){
+	
+	srand(time(NULL));
 
 	for (int i = 0; i < n; i++)	{
-		printf("%d ", vec[i]);
-	}	
+		int base = i * step;
+		int offset = rand() % range;
+		a[i] = base + offset;
+	}
+}
+
+//função para a impressão do vetor 
+void print_vec(int* a, int n){
+
+	for (int i = 0; i < n; i++){
+		printf("%d ",a[i] );
+	}
 	printf("\n");
 
+}
+
+//função para a trocar 2 duas posições especificas do vetor
+void swap_(int* a, int pos0, int pos1 ){
+	int tmp = a[pos0];
+	a[pos0] = a[pos1];
+	a[pos1] = tmp;
 }
 
 
@@ -80,24 +104,21 @@ void selection(int a[], int n) {
 
 
 */
-void selection_sort(int* vec, int n){
+void selection_sort(int* a, int n){
 
 	int min_pos;
-	int tmp;
 
 	for (int i = 0; i < n-1; i++){
 
-		min_pos = i ; //posição do menor valor (NAO é o menor valor propriamente dito, pq isso é desnecessario). Isso facilita na hora de trocar
+		min_pos = i ; //posição do menor valor
 
 		for (int j = i+1; j < n ; j++){
-			if(vec[j] < vec[min_pos]){
-				min_pos = j; //estou guardando a posição em que encontrei um valor menor que o atual 
+			if( ++comp_counter && (a[j] < a[min_pos])){
+				min_pos = j; // guardando a posição em que encontrei um valor menor que o atual 
 			}
 		}
-		tmp = vec[i];
-		vec[i] = vec[min_pos];
-		vec[min_pos] = tmp;
-
+		swap_(a, i , min_pos); //a troca se só depois de ter encontrado a posição correta
+		atrib_counter+=3;
 	}
 
 }
@@ -106,23 +127,28 @@ void selection_sort(int* vec, int n){
 
 int main(int argc, char* argv[]){
 
-	int* vec1 = NULL; // ponteiro usado para um vetor de numeros aleatorios entre 0 e 99
-	int vec2[] = {34,1,2,17,5,1,31};
-	int n = 7;
+	int n;  //numero de elementos
+	int* a = NULL; 
+
+	n = atoi(argv[1]); //recebe como parametro o segundo argumento de entrada no momento da execucao para ser o tamanho do vetor
 	
-	vec1 = (int*)malloc(n*sizeof(int));
-	srand(time(NULL));
-
-	for (int i = 0; i < n; i++){
-		vec1[i] = rand()%100;		
-	}
-
-	selection_sort(vec1, n);
-	selection_sort(vec2, n);
+	a = (int*)malloc(sizeof(int) * n); // vetor que deve conter os números
 	
-	print_vec(vec1, n);
-	print_vec(vec2, n);
 
-free(vec1);
+	//4 opções para geração dos números do vetor
+	init(a, n , 0, 5*n); 	//vetor aleatorio
+	//init(a, n, 10, 100); 	//vetor quase ordenado
+	//init(a, n, -1, 100); 	//vetor quase inversamente ordenado
+	//init(a, n, 0, n/10);	//vetor com muitos valores repetidos
+
+	comp_counter = 0;
+	atrib_counter = 0;
+	
+	selection_sort(a, n);
+	print_vec(a,  n);
+	printf("Comparações feitas: %ld\n", comp_counter);
+	printf("Atribuições feitas: %ld\n", atrib_counter);
+
+free(a);
 return 0;
 }
