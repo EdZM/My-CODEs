@@ -137,7 +137,6 @@ int main(int argc, char const *argv[]){
 	printf("Atribuições feitas: %ld\n", atrib_counter);
 
 	
-
 free(a);
 return 0;
 }

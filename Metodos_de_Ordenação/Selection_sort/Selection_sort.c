@@ -20,6 +20,7 @@ void init(int* a, int n, int step, int range){
 	}
 }
 
+
 //função para a impressão do vetor 
 void print_vec(int* a, int n){
 

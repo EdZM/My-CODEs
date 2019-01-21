@@ -18,6 +18,7 @@ void init(int a[], int n, int step, int range){
 	}
 }
 
+
 void print_vec(int vec[], int n){
 
 	printf("Vetor ordenado: ");

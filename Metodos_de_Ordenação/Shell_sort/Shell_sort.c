@@ -52,6 +52,7 @@ void shell_sort(int* a, int n){
 			atrib_counter++;
 		}
 	}
+
 }
 
 
