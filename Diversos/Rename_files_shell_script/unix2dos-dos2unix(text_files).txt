@@ -1,0 +1,10 @@
+se der o erro: unexpected word(expected __ )
+-->(isso acontece por causa do formato do arquivo de texto. O do Windows é um pouco diferente do Unix)
+
+no vim digite: 
+   :set ff=unix (converte pra arquivo de texto do unix)
+
+	ou
+
+   :set ff=dos (converte pra arquivo de texto do windows)	
+             
