@@ -1,0 +1,3 @@
+Como testar a  Árvore Binária Digital(bitwise trie):
+- instale o mars(IDE para assembly mips) e o java mais recente
+- abra o arquivo .asm e rode
