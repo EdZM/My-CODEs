@@ -23,7 +23,7 @@ Como transferir pastas de um repositório remoto para um local:
 - vá para a pasta onde deseja copiar as pastas do outro repositorio e abra o terminal lá.
 - no terminal digite: 
 	git remote add <nome_para_o_repo> <URL_repo> (cria um link para um repositório remoto especificado por sua URL do git)
-	git fetch --tags (atualiza as referências locais com relações às remotas, mas não faz o merge com o branch local)
+	git fetch <nome_para_o_repo> --tags (atualiza as referências locais com relações às remotas, mas não faz o merge com o branch 							local)
 	git merge --allow-unrelated-histories <nome_para_o_repo>/master(ou qualquer outra branch que se deseja copiar)
 	git remote remove <nome_para_o_repo>
 
