@@ -1,0 +1,3 @@
+Observações snake assembly:
+
+-caso o simulador não funcione vá pra o repositório: simoesusp/Processador-ICMC e baixe o arquivo t"tudo pronto facil windows"
