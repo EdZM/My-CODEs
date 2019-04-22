@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Trab_CG", "Trab_CG\Trab_CG.vcxproj", "{E4E5BC76-1B1D-4B14-957D-AB07C77DDDFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4E5BC76-1B1D-4B14-957D-AB07C77DDDFC}.Debug|x64.ActiveCfg = Debug|x64
+		{E4E5BC76-1B1D-4B14-957D-AB07C77DDDFC}.Debug|x64.Build.0 = Debug|x64
+		{E4E5BC76-1B1D-4B14-957D-AB07C77DDDFC}.Debug|x86.ActiveCfg = Debug|Win32
+		{E4E5BC76-1B1D-4B14-957D-AB07C77DDDFC}.Debug|x86.Build.0 = Debug|Win32
+		{E4E5BC76-1B1D-4B14-957D-AB07C77DDDFC}.Release|x64.ActiveCfg = Release|x64
+		{E4E5BC76-1B1D-4B14-957D-AB07C77DDDFC}.Release|x64.Build.0 = Release|x64
+		{E4E5BC76-1B1D-4B14-957D-AB07C77DDDFC}.Release|x86.ActiveCfg = Release|Win32
+		{E4E5BC76-1B1D-4B14-957D-AB07C77DDDFC}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9A2D2BBF-B88D-469A-A6B2-57CE62B3F648}
+	EndGlobalSection
+EndGlobal

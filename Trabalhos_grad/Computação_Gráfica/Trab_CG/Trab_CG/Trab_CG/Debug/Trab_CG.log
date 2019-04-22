@@ -1,0 +1,2 @@
+﻿  main.cpp
+c:\users\eduar\documents\trab_cg\trab_cg\trab_cg\main.cpp(1): fatal error C1083: Não é possível abrir arquivo incluir: 'cg_window.hpp': No such file or directory

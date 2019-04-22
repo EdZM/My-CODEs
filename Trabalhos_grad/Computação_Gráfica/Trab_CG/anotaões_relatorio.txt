@@ -1,0 +1,29 @@
+relatorio cg 
+
+partes a serem incluidas
+
+incluir numero cesar
+
+- (introdução)
+	- explicação breve das funcionalidades do trabalho
+	- explicar que há um README incluido no zip enviado
+	- o trabalho foi inteiramente desenvolvido tendo base codigos cpp disponibilizados no git(incluir links)
+	- desenvolvido no microsoft visual studio
+	
+	
+
+- parte de desenhar algo na tela
+	- funções da OpenGL
+	- vertex e fragment shaders implementados(shader program, usado nas transformações)
+	- vertices do catavento
+	- escolha das cores 
+	
+- parte de gerar as matrizes de transformação usando somente operações matematicas da biblioteca glm(como seno e cosseno,por exemplo)
+	- inclusão de metodos e atributos a classe window para auxiliar nessas operações
+
+
+- parte de mostrar na tela o resultado das transformações e usar os comandos do teclado para controla-las
+	- loop while que inclui as os eventos relacionados as teclas W, A, S, D, E, Q, e SPACE(process input) e de apresentação
+		do catavento na tela(glDrawArrays()) 
+
+
