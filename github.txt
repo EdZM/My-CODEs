@@ -1,38 +1,63 @@
-DICAS GITHUB
+﻿DICAS GITHUB
+
+WORKFLOW recomendado:
+	- puxa o repositorio que ta na master
+	- cria uma nova branch e trabalhe em cima dela 
+	- quando quiser atualizar a branch atual use: git add e depois git commit
+	- faça o merge com a master
+	- de um git push para enviar as alterações para o repositório em que comecei
+
+COMANDOS IMPORTANTES:
+
+	git pull: puxa novas alterações feitas no repositório para o repositório atual
+	git push: empurra alterções para um dado repositório
+	git status: informa em qual branch estou trabalhando no momento
+	git add: adiciona arquivos/pastas a branch atual
+	git commit: assegura que as mudanças feitas serão de fato incluidas no repositório
+	git branch: cria uma nova branch(se adicionar um <branch_name>) ou lista as branches locais existentes 
+		para criar uma branch remotamente: (comando acima) + git push origin <branch_name>
+		para deletar uma branch localmente: git branch -d <branch_name>
+		para deletar uma branch remotamente: git push origin --delete <branch_name>
+	
+	git diff: busca diferenças entre os arquivos do repositório. Ao incluir <commit_a_NBR> <commit_b_NBR> tenho a diferença entre dois commits especificos
+	git log: busca informações contidas na pasta .git, como histórico de commits, entradas
+	git checkout: ao incluir um <branch_name> eu troco para essa branch. Se incluir <commit_NBR> <file_name> consegue-se recuperar um dado arquivo de um dado commit
+	
+
 
 Como adicionar pastas/arquivos no github via terminal:
 
--na pasta onde estiver digite : git clone [URL](clono o repositorio desejado para a pasta atual)
--faça as alterações que desejar nessa pasta e depois digite: git add [caminho] / [arquivo] ou 	
-							     git add [caminho]/[nova_pasta]/
-							     (DICA: quando quiser adicionar pastas e subpastas inteiras de uma vez
-							     use na pasta local: git add .(ponto final))
+
+	-na pasta onde estiver digite : git clone [URL](clono o repositorio desejado para a pasta atual)
+
+	-faça as alterações que desejar nessa pasta e depois digite: git add [caminho] / [arquivo] ou 	
 							     
-							     
+		git add [caminho]/[nova_pasta]/
 -agora digite: git commit -m "mensagem justificando/apontando as mudanças"
--depois: git push origin master (sincroniza repositorio de origem com o master)
+
+	-depois: git push origin master (sincroniza repositorio de origem com o master)
 
 Como remover pastas/arquivos no github via terminal:
 
--digite: git rm -r [nome da pasta ou arquivo]
--agora digite: git commit -m "mensagem justificando/apontando as mudanças"
--depois: git push origin master (sincroniza repositorio de origem com o master)
 
-Como transferir pastas de um repositório remoto para um local:
+	-digite: git rm -r [nome da pasta ou arquivo]
 
-- vá para a pasta onde deseja copiar as pastas do outro repositorio e abra o terminal lá.
-- no terminal digite: 
-	git remote add <nome_para_o_repo> <URL_repo> (cria um link para um repositório remoto especificado por sua URL do git)
-	git fetch <nome_para_o_repo> --tags (atualiza as referências locais com relações às remotas, mas não faz o merge com o branch 							local)
-	git merge --allow-unrelated-histories <nome_para_o_repo>/master(ou qualquer outra branch que se deseja copiar)
-	git remote remove <nome_para_o_repo>
+	-agora digite: git commit -m "mensagem justificando/apontando as mudanças"
+
+	-depois: git push origin master (sincroniza repositorio de origem com o master)
 
 
-OBS.:
-- na hora de adicionar pastas, sempre inclua arquivos nela, pois o github não permite incluir pastas vazias no repositório (procure mais sobre isso, pois é possivel mandar o git adicionar um arquivo oculto e depois ignorá-lo na adicão da pasta)
+
+	OBS.:
+	- na hora de adicionar pastas, sempre inclua arquivos nela, pois o github não permite incluir pastas vazias no repositório (procure mais sobre isso, pois é possivel mandar o git adicionar um arquivo oculto e depois ignorá-lo na adicão da pasta)
+	- origin == repositorio remoto de onde o projeto foi originalmente clonado
+
+
 
 
 eventuais erros/soluções:
 
-	fetch first: digite git fetch
-	non->foward..: git pull --rebase
+	
+	(erro-->)fetch first: digite git fetch
+	
+	(erro-->)non->foward..: git pull --rebase
