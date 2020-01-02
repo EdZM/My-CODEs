@@ -1,0 +1,13 @@
+﻿Como executar as buscas implementadas no trabalho prático de IA: 
+
+	No Ubuntu:
+		- abra o terminal na pasta raiz do trabalho
+		- digite
+			- cd dfs_a_star src/ para testar a Depth First Search e a A* Search
+			- cd bfs_best_first src/ para testar a Breadth First Search e a Best First Search
+		
+		Para executar algum caso teste E compilar o trabalho:
+		- digite make -s run_test TEST_FILE=../maze/<escolher_caso_teste_da_pasta_mazes> OP=<tipo_de_busca: 
+													[1 - DFS, 2 - BFS, 3 - BEST_FIRST, 4 - A*>
+
+		Se desejar imprimir o caminho gerado ou o labirinto após a execução da busca, entre no código: dfs.cpp, a*.cpp ou search.cpp e descomente a região de impressão indicada no código.
