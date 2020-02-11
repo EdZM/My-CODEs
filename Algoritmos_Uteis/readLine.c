@@ -15,7 +15,8 @@ char *readLine() {
 
 		string=(char *)realloc(string,sizeof(char)*(counter+1));//o vetor ser� alocado dinamicamente de acordo com o numero de caracteres digitados
 		string[counter++] = c; // a posi��o atual do vetor ser� preenchida com o caract�r digitado.Em seguida o counter � incrementado
-	} while (c != ENTER);// o vetor ser� preenchido at� que o usu�rio aperte o ENTER ("10" na ASCII )
+	
+    } while (c != ENTER);// o vetor ser� preenchido at� que o usu�rio aperte o ENTER ("10" na ASCII )
 	string[counter-1] = '\0';
 
 	return string;

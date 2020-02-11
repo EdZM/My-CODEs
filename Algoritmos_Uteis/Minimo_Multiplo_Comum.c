@@ -3,22 +3,21 @@
 
 int MMC(int a,int b){
 
-    int maior,i;
+    int maior;
 
-    maior=fmax(a,b);// necessario para delimitar o alcance do laço e para que a função nao fique sendo chamada infinitamente
+    maior = fmax(a,b);// necessario para delimitar o alcance do laï¿½o e para que a funï¿½ï¿½o nao fique sendo chamada infinitamente
 
     if (a == b && b == 1) {
 		return 1;
 	}
 
-    for (i=2;i<=maior;i++){
+    for (int i = 2; i <= maior; i++){
 
-        if (fmod(a,i)==0 && fmod(b,i)==0){//verificando se i é multiplo de a e b
+        if (fmod(a,i) == 0 && fmod(b,i) == 0){//verificando se i ï¿½ multiplo de a e b
             return MMC(a/i, b/i) * i;
 
-        }else if (fmod(a,i) != 0 && fmod(b,i) == 0) {
+        } else if (fmod(a,i) != 0 && fmod(b,i) == 0) {
 			return MMC(a, b/i) * i;
-
 
 		} else if (fmod(a,i) == 0 && fmod(b,i) != 0) {
 			return MMC(a/i, b) * i;
@@ -32,7 +31,7 @@ int MMC(int a,int b){
 
 int main(int argc,char*argv[]){
 
-    int a,b;
+    int a, b;
     scanf("%d %d",&a,&b);
     printf("%d",MMC(a,b));
 

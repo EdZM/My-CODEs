@@ -1,43 +1,41 @@
-#include <stdlib.h> // deve ser incluída no caso de eu querer alocar memoria heap.
+#include <stdlib.h> // deve ser incluï¿½da no caso de eu querer alocar memoria heap.
 #include <stdio.h>
+#include <time.h>
 
-int compare(const void * a, const void * b)// necessario à função qsort()
-{
-  return ( *(int*)a - *(int*)b );
+int compare(const void * a, const void * b){ // necessario ï¿½ funï¿½ï¿½o qsort()
+    return ( *(int*)a - *(int*)b );
 }
 
 
 int main (int argc,char *argv){
 
-    int i,n,j;
-    int *counter=NULL;
-    float *num=NULL;// se eu mudar o tipo de variável para double por exemplo a ordenação de qsort nao sai certa.
+    int n;
+    int *counter = NULL;
+    float *num = NULL;// se eu mudar o tipo de variï¿½vel para double por exemplo a ordenaï¿½ï¿½o de qsort nao sai certa.
+    srand(time(NULL));
 
         scanf("%d",&n);
 
-        num=(float *)malloc(sizeof(float)*n); //nao esquecer que (double*) é um CAST e que nao é necessário inserí-lo.
-        counter=(int *)malloc(sizeof(int)*n);  //as vezes pode ocorrer de o codeblocks emitir um warning sobre esse CAST.
+        num = (float *)malloc(sizeof(float)*n); //nao esquecer que (double*) ï¿½ um CAST e que nao ï¿½ necessï¿½rio inserï¿½-lo.
+        counter = (int *)malloc(sizeof(int)*n);  //as vezes pode ocorrer de o codeblocks emitir um warning sobre esse CAST.
 
-            for (i=0;i<n;i++){
-
-                scanf("%f",&num[i]);
-
+            for (int i = 0; i < n; i++){
+                num[i] = rand() % 100; // gera uma lista com n numeros aleatorios entre 0 e 99
+                
             }
 
             qsort (num, n, sizeof(float), compare);
 
-            for (i=0;i<n;i++){
+            for (int i = 0; i < n; i++){
 
-                counter[i]=0;
-
+                counter[i] = 0;
             }
 
-            for (i=0;i<n;i++){
-                for (j=0;j<n;j++){
+            for (int i = 0; i < n; i++){
+                for (int j = 0; j < n; j++){                    
+                    if ( num[i] == num[j] ){
 
-                    if ( num[i]==num[j] ){
-
-                        counter[i]+=1;
+                        counter[i] += 1;
                     }
                 }
 
@@ -45,10 +43,10 @@ int main (int argc,char *argv){
 
             printf ("\n");
 
-            for (i=0; i<n; i++){
-
-               if ( num[i]!=num[i+1] )
-               printf ("%.1f %d \n",num[i],counter[i]);
+            for (int i = 0; i < n; i++){
+               
+               if ( num[i] != num[i+1] )
+               printf ("%.1f %d \n", num[i], counter[i]);
             }
 
 
@@ -59,10 +57,10 @@ return 0;
 
 
 
-// para esse algoritmo será necessario ordenar os numeros contidos em *num.
+// para esse algoritmo serï¿½ necessario ordenar os numeros contidos em *num.
 // para contar as ocorrencias de cada numero ,tente usar um ponteiro de contadores
-// cada posição do vetor apontado por esse ponteiro armazena o numero de vezes em que os numeros dados no inicio,
+// cada posiï¿½ï¿½o do vetor apontado por esse ponteiro armazena o numero de vezes em que os numeros dados no inicio,
 // agora ordenados,se repetem.
 // depois de ordenado o vetor ,compare o primeiro com o segundo e assim sucessivamente,ateh que todos tenham sido comparados
-// como o vetor esta ordenado ,fica mais facil a comparação.
-//depois de ordenar e efetuar a contagem , deve-se ,na hora de imprimir o resultado,eliminar as repetições.
+// como o vetor esta ordenado ,fica mais facil a comparaï¿½ï¿½o.
+//depois de ordenar e efetuar a contagem , deve-se ,na hora de imprimir o resultado,eliminar as repetiï¿½ï¿½es.

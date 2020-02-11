@@ -1,25 +1,26 @@
+#include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <time.h>
 
 int main(int argc, char *argv[]){
 
-    int n,maior,menor;
-
+    int n, maior, menor;
 
     scanf("%d",&n);
 
-    int i=0 ,conjunto[n];
+    int conjunto[n];
+    srand(time(NULL));
 
-    for(i=0; i<n; i++){
-
-        scanf(" %d",&conjunto[i]);
+    for(int i = 0; i < n; i++){
+        conjunto[i] = rand()%100;
+        
     }
 
     maior = conjunto[0];
     menor = conjunto[0];
 
-    for (i=0; i<n; i++) {
-        //printf("\n%d", conjunto[i]);
+    for (int i = 0; i < n; i++) {
         if(conjunto[i] > maior) {
             maior = conjunto[i];
         }
@@ -29,7 +30,6 @@ int main(int argc, char *argv[]){
     }
 
     printf("max: %d\nmin: %d\n", maior, menor);
-
 
     return(0);
 }

@@ -2,44 +2,33 @@
 #include <math.h>
 
 float fatorial (int n){
+    return ( n == 1 || n == 0 )? 1 : n * fatorial(n-1);
 
-    int j;
-    float fat=1;
-
-        for (j=1;j<=n;j++){
-
-            fat*=j;
-       }
-
-
-return fat;
 }
-
 
 int main (int argc,char* argv[]){
 
-    int i;
-    float seno,seno1=0,seno2=0,x;
+    float seno, seno1 = 0, seno2 = 0, x;
+    float grad;
 
-    scanf("%f",&x);
+    scanf("%f", &grad);
+
+    x = grad * (float)( (3.141592) / 180 ); // conversao para radianos
+
+    seno1 = x;
+    for (int i = 0; i <= 299; i++){ //300 iteraï¿½ï¿½es
+
+        if ( i % 2 != 0 ){
+            seno1 += pow(x,(1 + (4 * i))) / fatorial(1 + (4 * i));
+
+        } else
+            seno2 += pow(x,(3 + (2 * i))) / fatorial(3 + (2 * i));
+
+    }
+
+    seno = seno1 - seno2;
+    printf("sen(%.0f):%.6f\n",grad ,seno);
 
 
-        seno1=x;
-        for (i=0;i<=299;i++){ //300 iterações
-
-            if ( i%2!=0 ){
-
-                seno1+=pow(x,(1+4*i))/fatorial(1+4*i);
-
-            }else
-
-                seno2+=pow(x,(3+2*i))/fatorial(3+2*i);
-
-        }
-
-        seno=seno1-seno2;
-        printf("%.6f",seno);
-
-
-return 0;       //0.785398
+return 0;       
 }
