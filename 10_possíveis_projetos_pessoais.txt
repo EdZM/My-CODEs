@@ -1,0 +1,14 @@
+Lista de 10 projetos que posso fazer:
+
+- editor com formatação rich-text;
+- monitor de atividade e processos da CPU;
+- clone do Apple Music ou spotify;
+- calendário;
+- mostrar e filtrar repositórios do github;
+- qualquer sistema que consuma uma API externa;
+- página de catálogo;
+- programar um e-commerce;
+- criar o meu próprio portfólio;
+- jogo multiplayer;
+ 
+ para mais detalhes e informações sobre os projetos acima: https://www.youtube.com/watch?v=fYR9L2ZmodM
