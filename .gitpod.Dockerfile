@@ -2,7 +2,7 @@ FROM gitpod/workspace-full
 
 RUN sudo apt-get update \
  && sudo apt-get install -y \
-    libcr-dev mpich2 mpich2-doc \
+    openmpi-bin openmpi-common openssh-client openssh-server libopenmpi1.3 libopenmpi-dbg libopenmpi-dev \
  && sudo rm -rf /var/lib/apt/lists/*
 
 # Install custom tools, runtime, etc. using apt-get
