@@ -2,7 +2,9 @@ FROM gitpod/workspace-full
 
 RUN sudo apt-get update \
  && sudo apt-get install -y \
-    libibnetdisc-dev \
+    libcr-dev \
+    mpich2 \
+    mpich2-doc \
  && sudo rm -rf /var/lib/apt/lists/*
 
 # Install custom tools, runtime, etc. using apt-get
