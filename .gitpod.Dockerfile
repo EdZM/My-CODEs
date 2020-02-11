@@ -1,7 +1,8 @@
 FROM gitpod/workspace-full
 
 RUN sudo apt-get update \
- && sudo apt-get install libcr-dev mpich2 mpich2-doc \
+ && sudo apt-get install -y \
+  libcr-dev mpich mpich-doc \
  && sudo rm -rf /var/lib/apt/lists/*
 
 # Install custom tools, runtime, etc. using apt-get
