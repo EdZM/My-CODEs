@@ -8,7 +8,7 @@ NEWEST=$2 # recebe o segundo argumento(nome_a_ser_incluido) apos o ./Rename.sh
 EXTENSION=$3 # recebe o terceiro argumento(formato_dos_arquivos) apos o ./Rename.sh 
 
 
-for FILE in *.$EXTENSION ; #percorre cada arquivo com o formato especificado
+for FILE in *$EXTENSION ; #percorre cada arquivo com o formato especificado
 do 
 
 #echo $FILE --> imprime o nome de cada arquivo que tem o formato desejado
