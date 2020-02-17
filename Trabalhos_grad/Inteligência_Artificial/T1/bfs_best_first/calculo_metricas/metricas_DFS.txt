@@ -1,0 +1,38 @@
+Labirinto 5x5
+
+Metricas: 
+Media de custos: 12.68
+Número médio de elementos que formam o caminho: 12
+Media de tempo: 0.24192ms
+
+
+Labirinto 10x10
+
+Metricas: 
+Media de custos: 38.6
+Número médio de elementos que formam o caminho: 35.2
+Media de tempo: 0.2599ms
+
+
+Labirinto 20x20
+
+Metricas: 
+Media de custos: 146.56
+Número médio de elementos que formam o caminho: 128.2
+Media de tempo: 0.28088ms
+
+
+Labirinto 50x50
+
+Metricas: 
+Media de custos: 839.322
+Número médio de elementos que formam o caminho: 739.2
+Media de tempo: 0.50224ms
+
+
+Labirinto 150x150
+
+Metricas: 
+Media de custos: 9888.8
+Número médio de elementos que formam o caminho: 8725.4
+Media de tempo: 2.43496ms

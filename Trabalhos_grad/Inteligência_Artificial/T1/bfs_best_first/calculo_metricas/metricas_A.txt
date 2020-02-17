@@ -1,0 +1,33 @@
+Labirinto 5x5
+
+Metricas: 
+Media de custos: 2.76
+Media de tempo: 0.0973348ms
+
+
+Labirinto 10x10
+
+Metricas: 
+Media de custos: 24.08
+Media de tempo: 0.144133ms
+
+
+Labirinto 20x20
+
+Metricas: 
+Media de custos: 18.68
+Media de tempo: 0.143779ms
+
+
+Labirinto 50x50
+
+Metricas: 
+Media de custos: 510.32
+Media de tempo: 0.828264ms
+
+
+Labirinto 150x150
+
+Metricas: 
+Media de custos: 4481.76
+Media de tempo: 3.43014ms
