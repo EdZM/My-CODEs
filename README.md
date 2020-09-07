@@ -10,17 +10,19 @@
     - [ ] Hash Table
     - [ ] Heap
     - [ ] Binary Heap
+    - [ ] Trees:
+        - [x] Binary Search Tree
+        - [ ] Red-Black Tree
+        - [ ] AVL Tree
+        - [ ] Traversals: preorder, inorder, postorder, BFS, DFS
+    
     - [ ] Graphs:
         - [ ] Directed
         - [ ] Undirected
         - [x] Adjacency Matrix
         - [x] Adjacency List
         - [x] Traversals: BFS, DFS
-    - [ ] Trees:
-        - [x] Binary Search Tree
-        - [ ] Red-Black Tree
-        - [ ] AVL Tree
-        - [ ] Traversals: preorder, inorder, postorder, BFS, DFS
+    
  
 - Algorithms:
     - [ ] Binary Search
