@@ -14,7 +14,12 @@
         - [x] Binary Search Tree
         - [ ] Red-Black Tree
         - [ ] AVL Tree
-        - [ ] Traversals: preorder, inorder, postorder, BFS, DFS
+        - [ ] Traversals: 
+            - [ ] preorder 
+            - [x] inorder
+            - [ ] postorder
+            - [ ] BFS
+            - [ ] DFS
     
     - [ ] Graphs:
         - [ ] Directed
