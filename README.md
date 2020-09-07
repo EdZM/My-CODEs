@@ -1,4 +1,4 @@
-# My list of codes made during graduation
+# My list of implemented codes 
 
 ### Codes finished/to be finished:
 - Data Structures:
@@ -36,7 +36,7 @@
     - [ ] Binary Search
     - [x] DIJKSTRA
     - [ ] A*
-    - [ ] Topological sort(dfs-based)
+    - [x] Topological sort(dfs-based)
     
 - Sorts:
     - [x] Bubble sort(and some variations)
