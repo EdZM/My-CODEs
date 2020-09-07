@@ -3,9 +3,9 @@
 
 int main (int argc , char* argv[]){
 
-    int j, quociente, aux;
+    int j, quoc, aux;
     long int n;
-    int resto[100];
+    int rest[100];
 
     scanf("%ld",&n);
 
@@ -20,14 +20,14 @@ int main (int argc , char* argv[]){
             j = 1;                                //esse j serve para controlar as divis�es que ser�o feitas at� que o if seja satisfeito e o for possa ser interrompido
             for (int i = 0; i < j ;i++){
 
-                resto[i] = n % 16;
-                quociente = ( n - resto[i] )/16;
-                if( quociente < 16 ){   //quando o quociente atingir um valor menor que 16 as divis�es devem ser interrompidas
-                                        // e o valor desse quociente guardado em aux.
-                    aux = quociente;
+                rest[i] = n % 16;
+                quoc = ( n - rest[i] )/16;
+                if( quoc < 16 ){   //quando o quoc atingir um valor menor que 16 as divis�es devem ser interrompidas
+                                        // e o valor desse quoc guardado em aux.
+                    aux = quoc;
                     break;
                 }
-                n = quociente;  //feita a divis�o o n recebe o ultimo quociente obtido
+                n = quoc;  //feita a divis�o o n recebe o ultimo quociente obtido
                 j++;
             }
 
@@ -42,10 +42,10 @@ int main (int argc , char* argv[]){
             
             for (j; j >= 0; j--){                   // para que a impress�o saia corretamente ,deve -se imprimir o aux antes de tudo.Feito isso,o vetor
                                                 // resto deve ser impresso de tras para frente.
-                if (resto[j] <= 15 && resto[j] >= 10){
-                    printf("%c",resto[j] + 55);
+                if (rest[j] <= 15 && rest[j] >= 10){
+                    printf("%c",rest[j] + 55);
                 } else
-                    printf("%d",resto[j]);
+                    printf("%d",rest[j]);
             }
 
 

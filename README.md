@@ -37,6 +37,7 @@
     - [x] DIJKSTRA
     - [ ] A*
     - [x] Topological sort(dfs-based)
+    - [x] Eratosthenes Sieve
     
 - Sorts:
     - [x] Bubble sort(and some variations)
