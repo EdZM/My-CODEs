@@ -21,7 +21,16 @@
         - [ ] Undirected
         - [x] Adjacency Matrix
         - [x] Adjacency List
-        - [x] Traversals: BFS, DFS
+        - [ ] Traversals: BFS, DFS
+            - [ ] DFS with adjacency list (recursive)
+            - [ ] DFS with adjacency list (iterative with stack)
+            - [ ] DFS with adjacency matrix (recursive)
+            - [ ] DFS with adjacency matrix (iterative with stack)
+            - [ ] BFS with adjacency list
+            - [ ] BFS with adjacency matrix
+            - [ ] minimum spanning tree
+        
+        
 
     - [x] Bitwise Trie (Assembly)
  
