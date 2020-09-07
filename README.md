@@ -30,9 +30,11 @@
     - [ ] A*
     
 - Sorts:
-    - [x] Bubble sort
+    - [x] Bubble sort(and some variations)
     - [x] Insertion sort
     - [x] Selection sort
     - [x] Heapsort
     - [x] Mergesort
     - [x] Quicksort
+    - [x] Radix sort
+    - [x] Shell sort
