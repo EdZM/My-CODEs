@@ -1,6 +1,6 @@
 # My list of codes made during graduation
 
-# Codes finished/to be finished:
+### Codes finished/to be finished:
 - Data Structures:
     - [ ] Array
     - [ ] Linked List
