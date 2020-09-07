@@ -1,25 +1,29 @@
 # Codes finished/to be finished:
 - Data Structures:
     - [ ] Array
-    - [ ] Linked list
+    - [ ] Linked List
     - [x] Queue
     - [ ] Priority Queue    
     - [x] Stack
-    - [ ] Hash table
+    - [ ] Hash Table
     - [ ] Heap
+    - [ ] Binary Heap
     - [ ] Graphs:
-        - [x] adjacency matrix
-        - [x] adjacency list
-        - [x] traversals: BFS, DFS
+        - [ ] Directed
+        - [ ] Undirected
+        - [x] Adjacency Matrix
+        - [x] Adjacency List
+        - [x] Traversals: BFS, DFS
     - [ ] Trees:
         - [x] Binary Search Tree
         - [ ] Red-Black Tree
         - [ ] AVL Tree
-        - [ ] traversals: preorder, inorder, postorder, BFS, DFS
+        - [ ] Traversals: preorder, inorder, postorder, BFS, DFS
  
-- Algortithms:
+- Algorithms:
     - [ ] Binary Search
-    - [ ] DIJKSTRA
+    - [x] DIJKSTRA
+    - [ ] A*
     
 - Sorts:
     - [x] Bubble sort
@@ -28,4 +32,3 @@
     - [x] Heapsort
     - [x] Mergesort
     - [x] Quicksort
-
