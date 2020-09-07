@@ -4,12 +4,12 @@
 - Data Structures:
     - [ ] Array
     - [ ] Linked List
-    - [x] Queue
-    - [ ] Priority Queue    
-    - [x] Stack
+    - [x] Queue (using array & linked list)    
+    - [x] Stack (using array & linked list)
     - [ ] Hash Table
     - [ ] Heap
     - [ ] Binary Heap
+    - [ ] Priority Queue
     - [ ] Trees:
         - [x] Binary Search Tree
         - [ ] Red-Black Tree
