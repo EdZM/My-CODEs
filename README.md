@@ -37,7 +37,7 @@
     - [x] DIJKSTRA
     - [ ] A*
     - [x] Topological sort(dfs-based)
-    - [x] Eratosthenes Sieve
+    - [x] Eratosthenes Sieve(primeNumbers)
     
 - Sorts:
     - [x] Bubble sort(and some variations)
