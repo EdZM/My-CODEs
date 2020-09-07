@@ -22,12 +22,14 @@
         - [x] Adjacency Matrix
         - [x] Adjacency List
         - [x] Traversals: BFS, DFS
-    
+
+    - [x] Bitwise Trie (Assembly)
  
 - Algorithms:
     - [ ] Binary Search
     - [x] DIJKSTRA
     - [ ] A*
+    - [ ] Topological sort(dfs-based)
     
 - Sorts:
     - [x] Bubble sort(and some variations)
