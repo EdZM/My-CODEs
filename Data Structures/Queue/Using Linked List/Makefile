@@ -5,10 +5,10 @@ MAIN_NAME=QUEUE
 MAIN_OBJ=main.o
 OBJ1=queue.o
 
-MAINCFILE=./src/main.c
-CFILE1=./src/queue.c
+MAINCFILE=main.c
+CFILE1=queue.c
 
-HFILE1=./include/queue.h
+HFILE1=queue.h
 
 compile: main
 
