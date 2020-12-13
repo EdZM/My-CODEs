@@ -2,22 +2,22 @@
 
 ### Codes finished/to be finished:
 - Data Structures:
-    - [ ] Array
-    - [ ] Linked List
+    - [x] Array
+    - [x] Linked List
     - [x] Queue (using array & linked list)    
     - [x] Stack (using array & linked list)
     - [ ] Hash Table
     - [ ] Heap
     - [ ] Binary Heap
-    - [ ] Priority Queue
+    - [x] Priority Queue
     - [ ] Trees:
         - [x] Binary Search Tree
-        - [ ] Red-Black Tree
-        - [ ] AVL Tree
+        - [x] Red-Black Tree
+        - [x] AVL Tree
         - [ ] Traversals: 
-            - [ ] preorder 
+            - [x] preorder 
             - [x] inorder
-            - [ ] postorder
+            - [x] postorder
             - [ ] BFS
             - [ ] DFS
     
